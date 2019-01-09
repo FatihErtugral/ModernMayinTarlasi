@@ -142,6 +142,7 @@
   <ItemGroup>
     <None Include="Resources\explosion.gif" />
     <None Include="Resources\360fx360f.png" />
+    <Content Include="MMT.gif" />
     <Content Include="Resources\v-for-vendetta.png" />
   </ItemGroup>
   <ItemGroup>
