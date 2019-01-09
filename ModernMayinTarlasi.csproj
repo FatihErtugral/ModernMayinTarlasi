@@ -140,13 +140,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Image1.gif" />
     <None Include="Resources\explosion.gif" />
     <None Include="Resources\360fx360f.png" />
-    <None Include="Resources\kissclipart-bomb-png-clipart-time-bomb-b60e0fd46dd8643d.png" />
-    <Content Include="Resources\mine.png" />
-    <None Include="Resources\minebomb.jpg" />
-    <None Include="Resources\UIHere.png" />
     <Content Include="Resources\v-for-vendetta.png" />
   </ItemGroup>
   <ItemGroup>

@@ -24,7 +24,7 @@ namespace WindowsFormsApp
         private Color butonAnaRenk;
 
         private Size    btnSize     = new Size(25, 25);
-        private Image   MayinImg    = Resources.dinamit;
+        private Image   MayinImg    = Resources.mineBomb;
         private Image   TedbirImg   = Resources.v_for_vendetta;
 
         public int  AcilmamisMayinsizButon  = 0;

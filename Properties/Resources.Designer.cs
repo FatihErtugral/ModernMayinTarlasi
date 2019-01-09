@@ -63,39 +63,9 @@ namespace WindowsFormsApp.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
-        internal static System.Drawing.Bitmap dinamit {
-            get {
-                object obj = ResourceManager.GetObject("dinamit", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
-        /// </summary>
-        internal static System.Drawing.Bitmap mine {
-            get {
-                object obj = ResourceManager.GetObject("mine", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
-        /// </summary>
         internal static System.Drawing.Bitmap mineBomb {
             get {
                 object obj = ResourceManager.GetObject("mineBomb", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
-        /// </summary>
-        internal static System.Drawing.Bitmap UIHere {
-            get {
-                object obj = ResourceManager.GetObject("UIHere", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
