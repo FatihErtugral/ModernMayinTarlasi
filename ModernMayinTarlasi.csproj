@@ -145,6 +145,7 @@
     <None Include="Resources\360fx360f.png" />
     <Content Include="MMT.gif" />
     <None Include="Resources\consoleBackground.jpg" />
+    <Content Include="M_Consol.gif" />
     <Content Include="Resources\v-for-vendetta.png" />
   </ItemGroup>
   <ItemGroup>
