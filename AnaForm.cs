@@ -58,6 +58,7 @@ namespace WindowsFormsApp
         private void btnBaslat_Click(object sender, EventArgs e)
         {
             this.Hide();
+           
             panel1.Visible = flowLayoutPanel2.Visible = false;
             #region Oyun zorluk derecesi
 
