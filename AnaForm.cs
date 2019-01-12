@@ -216,9 +216,9 @@ namespace WindowsFormsApp
             {
                 transparanRichTextBox1.Text += consoleTxtBx.Text;
                 consoleTxtBx.Text = "";
+                transparanRichTextBox1.Text += MayinTarlasi.MatrisPrint();
                 transparanRichTextBox1.SelectionStart = transparanRichTextBox1.TextLength;
                 transparanRichTextBox1.ScrollToCaret();
-                transparanRichTextBox1.Text += MayinTarlasi.MatrisPrint();
             }
         }
 
