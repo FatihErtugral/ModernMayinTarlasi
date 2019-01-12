@@ -63,9 +63,9 @@ namespace WindowsFormsApp.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
-        internal static System.Drawing.Bitmap half_life_background_3 {
+        internal static System.Drawing.Bitmap consoleBackground {
             get {
-                object obj = ResourceManager.GetObject("half_life_background_3", resourceCulture);
+                object obj = ResourceManager.GetObject("consoleBackground", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

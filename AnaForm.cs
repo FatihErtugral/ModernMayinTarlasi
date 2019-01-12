@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 // MatrisField sınıfında:  İki boyutlu integer bir matriste, mayınlı butonları temsil etmesi için random sayı ile "9" ile kodlanıp matrise yerleştiriliyor
@@ -11,28 +12,36 @@ namespace WindowsFormsApp
     {
         private TarladakiButonlar   MayinTarlasi;
         private SkorJsonDosyaCikisi SkorTablosu;
+        private SlidingPanel        consolePanel;
+
+        private Button  btnCnslOpen;
         private string  takmaIsim;
         private ushort  mayinSayisi;
         private int     saniye = 0;
 
+
         public AnaForm()
         {
             InitializeComponent();
+            //Konum
             pencereyiKonumlandir();
+            //Skor
+            SkorTablosu = new SkorJsonDosyaCikisi();
             this.ActiveControl = txtBxTakmaIsim;
+            //Konsol
+            btnCnslOpen = new Button();
+            consolePanel = new SlidingPanel(ref pnlConsole,ref btnCnslOpen, -400,0);
+            this.pnlConsole.Width = this.Width;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            SkorTablosu = new SkorJsonDosyaCikisi();
             metroToggle1.Style = this.Style;
             metroToggle1.Theme = this.Theme;
             metroToggle2.Style = this.Style;
             metroToggle2.Theme = this.Theme;
             metroToggle3.Style = this.Style;
             metroToggle3.Theme = this.Theme;
-            panel2.Visible = false;
-            
         }
 
         private void yeniOyunToolStripMenuItem_Click(object sender, EventArgs e)
@@ -50,7 +59,9 @@ namespace WindowsFormsApp
         {
             this.Hide();
             panel1.Visible = flowLayoutPanel2.Visible = false;
+            #region Oyun zorluk derecesi
 
+           
             if (metroToggle1.CheckState == CheckState.Checked)
             {
                 mayinSayisi     = 15;
@@ -70,13 +81,23 @@ namespace WindowsFormsApp
                 saniye          = 200;
                 MayinTarlasi    = new TarladakiButonlar(22, 20, mayinSayisi);
             }
+            #endregion
+
+            #region Boyutlandırma - Panel gizleyip açma - Pencere konumlandırma
+
+            
             metroTile1.Top  = 130;
             metroPanel1.Top = 145;
+
+            //Butonları oluşturucu fonksiyon
             MayinTarlasi.MatristekiVeriyiButonlaraCevirListeYap(ref metroPanel1);
+
             this.Width      = metroPanel1.Width + 46;
             this.Height     = metroPanel1.Height + 160;
             this.MinimumSize = new Size(metroPanel1.Width + 46,metroPanel1.Height + 160);
             this.MaximumSize = new Size(metroPanel1.Width + 46,metroPanel1.Height + 160);
+            this.pnlConsole.Width = this.Width;
+            
             metroTile1.Width = metroPanel1.Width;
             GC.Collect();
             GC.WaitForPendingFinalizers();
@@ -87,24 +108,26 @@ namespace WindowsFormsApp
             timer1.Start();
 
             pencereyiKonumlandir();
+            #endregion
             this.Show();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             saniye--;
-            if (saniye == 0)
+            if (saniye == 0) //lost time is over
             {
                 SkorTablosu.Ekle(takmaIsim, MayinTarlasi.skor);
                 timer1.Stop();
                 SkorGoster();
                 return;
             }
+
             lblSkorBoard.Text      = MayinTarlasi.skor.ToString();
             lblTemizAlanBoard.Text = MayinTarlasi.AcilmamisMayinsizButon.ToString();
             lblKalanSureBoard.Text = saniye.ToString();
 
-            if (MayinTarlasi.AcilmamisMayinsizButon == 0)
+            if (MayinTarlasi.AcilmamisMayinsizButon == 0) // Win
             {
                 SkorTablosu.Ekle(takmaIsim, MayinTarlasi.skor + (saniye *2)); // kalan saniye 2 ile çarpılıp skora ekleniyor.
                 lblSkorBoard.Text = (MayinTarlasi.skor + (saniye *2)).ToString();
@@ -112,7 +135,7 @@ namespace WindowsFormsApp
                 SkorGoster();
                 return;
             }
-            if (MayinTarlasi.kaybetme)
+            if (MayinTarlasi.kaybetme) // Game over
             {
                 SkorTablosu.Ekle(takmaIsim, MayinTarlasi.skor);
                 timer1.Stop();
@@ -156,6 +179,10 @@ namespace WindowsFormsApp
             metroTile1.Top = 173;
             this.Show();
         }
+
+        #region kolay-orta-zor buton seçme senkronizasyon
+
+        
         private void metroToggle1_Click(object sender, EventArgs e)
         {
             metroToggle1.CheckState = CheckState.Checked;
@@ -176,13 +203,14 @@ namespace WindowsFormsApp
             metroToggle2.CheckState = CheckState.Unchecked;
             metroToggle3.CheckState = CheckState.Checked;
         }
+        #endregion
 
-        private void metroButton1_Click(object sender, EventArgs e)
+        private void btnMenu_Click(object sender, EventArgs e)
         {
-            Menu.Show(metroButton1, 0, metroButton1.Height);
+            Menu.Show(btnMenu, 0, btnMenu.Height);
         }
 
-        private void çıkışToolStripMenuItem_Click(object sender, EventArgs e)
+        private void CikisToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
         }
@@ -199,7 +227,7 @@ namespace WindowsFormsApp
             skrfrm.ShowDialog();
         }
 
-        private void hakkındaToolStripMenuItem_Click(object sender, EventArgs e)
+        private void HakkindaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AboutBox ab = new AboutBox
             {
@@ -210,25 +238,71 @@ namespace WindowsFormsApp
             ab.Show();
         }
 
+
+        #region Konsol
+
+       
         private void ConsoleTextBox_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            if(e.KeyCode == Keys.Enter && MayinTarlasi !=null)
             {
-                transparanRichTextBox1.Text += consoleTxtBx.Text;
-                consoleTxtBx.Text = "";
-                transparanRichTextBox1.Text += MayinTarlasi.MatrisPrint();
-                transparanRichTextBox1.SelectionStart = transparanRichTextBox1.TextLength;
-                transparanRichTextBox1.ScrollToCaret();
+                richTextBox1.Text   += consoleTxtBx.Text + "\n";
+                if (consoleTxtBx.Text == "help")
+                {
+                    richTextBox1.Text +=    "print array    => iki boyutlu diziyi yazdırır, 9'lar mayınları temsil eder\n"+
+                                            "bomb off       => Bütün mayınları tedbirli moda geçirir\n"+
+                                            "bomb on        => Bütün mayınları tedbirli moddan çıkartır\n"+
+                                            "clear          => Ekranı temizler\n"+
+                                            "exit           => Oyunu kapatır\n";
+                }
+                else if (consoleTxtBx.Text == "print array" )
+                {
+                    richTextBox1.Text += MayinTarlasi.MatrisPrint();
+                }
+                else if (consoleTxtBx.Text == "bomb off")
+                {
+                    MayinTarlasi.MayinlariKilitle();
+                }
+                else if (consoleTxtBx.Text == "bomb on")
+                {
+                    MayinTarlasi.MayinlarinKilidiniKaldir();
+                }
+                else if (consoleTxtBx.Text == "clear")
+                {
+                    richTextBox1.Text = "";
+                }
+                else if (consoleTxtBx.Text == "exit")
+                {
+                    this.Close();
+                    return;
+                }
+
+                consoleTxtBx.Text   = "";
+                richTextBox1.SelectionStart = richTextBox1.TextLength;
+                richTextBox1.ScrollToCaret();
             }
         }
-
+        
         private void AnaForm_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == '"')
+            if (e.KeyChar == '"'  && MayinTarlasi !=null)
             {
-                panel2.Visible = panel2.Visible ? false : true;
+                btnCnslOpen.PerformClick();
                 consoleTxtBx.Focus();
             }
         }
+
+        private void consoleTxtBx_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '"')
+            {
+                e.Handled = true;
+                return;
+            }
+            e.Handled=false;
+            return;
+        }
+
+        #endregion
     }
 }

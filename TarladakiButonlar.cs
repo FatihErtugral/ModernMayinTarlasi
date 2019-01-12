@@ -26,6 +26,7 @@ namespace WindowsFormsApp
         private Size    btnSize     = new Size(25, 25);
         private Image   MayinImg    = Resources.mineBomb;
         private Image   TedbirImg   = Resources.v_for_vendetta;
+        private ushort  btnMargin   = 2;
 
         public int  AcilmamisMayinsizButon  = 0;
         public int  skor        = 0;
@@ -64,7 +65,41 @@ namespace WindowsFormsApp
                     butonListesi.Add(new Point(satir, sutun), DinamikButonOlustur(matrisDizi._2DArray, satir, sutun, ref pnlPlatform));
         }
         ///////////////////////////////////////////////////////////////////
+
+        #region Konsol Metodları
+
         
+        public void MayinlariKilitle()
+        {
+            foreach (var btn in butonListesi)
+            {
+                if (btn.Value.Tag.ToString() == "9")
+                {
+                    btn.Value.BackgroundImage = TedbirImg;
+                    //btn.Value.Enabled = false;
+                    //btn.Value.BackColor = mayinliButonRengi;
+                }
+            }
+           // kaybetme = true;
+        }
+        public void MayinlarinKilidiniKaldir()
+        {
+            foreach (var btn in butonListesi)
+            {
+                if (btn.Value.Tag.ToString() == "9")
+                {
+                    btn.Value.BackgroundImage = null;
+                    //btn.Value.Enabled = false;
+                    //btn.Value.BackColor = mayinliButonRengi;
+                }
+            }
+           // kaybetme = true;
+        }
+        ///////////////////////////////////////////////////////////////////
+        /// <summary>
+        /// İki boyutlu diziyi sitring olarak yazdır
+        /// </summary>
+        /// <returns></returns>
         public string MatrisPrint()
         {
             string matris ="";
@@ -72,20 +107,25 @@ namespace WindowsFormsApp
             {
                 for (int k = 0; k < this.yatayButonSayisi; k++)
                 {
-                    matris += $"  [{matrisDizi._2DArray[k, i]}]";
+                    matris += $" [{matrisDizi._2DArray[k, i]}]";
                 }
                 matris += "\n";
             }
-
-
             return matris;
         }
 
-        
-        ///////////////////////////////////////////////////////////////////
+        #endregion
 
-        // ikili dizi ile bir matris oluşturup kordinatları verildiğinde,
-        // buton bilgileri işlenir ve ilgili kordinata panel içinde konumlandırılır
+        ///////////////////////////////////////////////////////////////////
+        /// <summary>
+        /// ikili dizi ile bir matris oluşturup kordinatları verildiğinde,
+        /// buton bilgileri işlenir ve ilgili kordinata panel içinde konumlandırılır
+        /// </summary>
+        /// <param name="matrisHarita">MatrisField sınıfında oluşturulan diziyi alır</param>
+        /// <param name="kordinat_X">Dizinin x indisi arr[x,y]</param>
+        /// <param name="kordinat_Y">Dizinin y indisi arr[x,y]</param>
+        /// <param name="pnlPlatform">AnaForm'da oluşturulan panelin referansı</param>
+        /// <returns>Dictonary listesine eklemek için Buton nesnesi geri döndürür</returns>
         private Button DinamikButonOlustur(int[,] matrisHarita, int kordinat_X, int kordinat_Y, ref MetroPanel pnlPlatform)
         {
             Button btn = new Button();
@@ -96,17 +136,21 @@ namespace WindowsFormsApp
             btn.Name    = $"{kordinat_X},{kordinat_Y}"; // Kordinatlar isimlerden yakalanıyor
             btn.Font    = new Font("Let's go Digital", 12f);
             btn.Size    = btnSize;
-            btn.Margin  = new Padding(2);
+            btn.Margin  = new Padding(btnMargin);
             btn.Padding = new Padding(0);
             btn.TabStop = false;
             btn.TabIndex    = 10;
             btn.Enabled     = true;
             btn.FlatStyle   = FlatStyle.Flat;
             btn.BackColor   = butonAnaRenk;//Color.OliveDrab;
-            btn.Location    = new Point { X = kordinat_X * (btn.Height+2), Y = kordinat_Y * (btn.Width+2) };
+
+            btn.Location    = new Point{
+                X = (kordinat_X * (btn.Height + btnMargin)),
+                Y = (kordinat_Y * (btn.Width + btnMargin))
+            };
+
             btn.Click   += new EventHandler(BtnSolTik);
             btn.MouseUp += new MouseEventHandler(BtnSagTik);
-
 
             pnlPlatform.Controls.Add(btn);
             return btn;
@@ -255,6 +299,7 @@ namespace WindowsFormsApp
                 (int)kntrlBtn.Tag == 7 || (int)kntrlBtn.Tag == 8
                 )
             {
+                kntrlBtn.BackgroundImage = null;
                 kntrlBtn.Text       = kntrlBtn.Tag.ToString();
                 kntrlBtn.BackColor  = numaraliButonRengi;
                 kntrlBtn.ForeColor  = butonNumaraRengi;

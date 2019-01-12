@@ -93,9 +93,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="TransparanRichTextBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="SlidingPanel.cs" />
     <Compile Include="SkorForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,7 +144,7 @@
     <None Include="Resources\explosion.gif" />
     <None Include="Resources\360fx360f.png" />
     <Content Include="MMT.gif" />
-    <None Include="Resources\half-life-background-3.jpg" />
+    <None Include="Resources\consoleBackground.jpg" />
     <Content Include="Resources\v-for-vendetta.png" />
   </ItemGroup>
   <ItemGroup>

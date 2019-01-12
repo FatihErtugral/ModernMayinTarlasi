@@ -45,7 +45,7 @@
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.lblKalansure = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.btnMenu = new MetroFramework.Controls.MetroButton();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.metroTile1 = new MetroFramework.Controls.MetroTile();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
@@ -60,17 +60,15 @@
             this.metroToggle3 = new MetroFramework.Controls.MetroToggle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.metroTile2 = new MetroFramework.Controls.MetroTile();
-            this.transparanRichTextBox1 = new WindowsFormsApp.TransparanRichTextBox();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.pnlConsole = new System.Windows.Forms.Panel();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.consoleTxtBx = new System.Windows.Forms.TextBox();
-            this.pctBxConsole = new System.Windows.Forms.PictureBox();
             this.Menu.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pctBxConsole)).BeginInit();
+            this.pnlConsole.SuspendLayout();
             this.SuspendLayout();
             // 
             // timer1
@@ -126,14 +124,14 @@
             this.hakkındaToolStripMenuItem.Name = "hakkındaToolStripMenuItem";
             this.hakkındaToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.hakkındaToolStripMenuItem.Text = "Hakkında";
-            this.hakkındaToolStripMenuItem.Click += new System.EventHandler(this.hakkındaToolStripMenuItem_Click);
+            this.hakkındaToolStripMenuItem.Click += new System.EventHandler(this.HakkindaToolStripMenuItem_Click);
             // 
             // çıkışToolStripMenuItem
             // 
             this.çıkışToolStripMenuItem.Name = "çıkışToolStripMenuItem";
             this.çıkışToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.çıkışToolStripMenuItem.Text = "Çıkış";
-            this.çıkışToolStripMenuItem.Click += new System.EventHandler(this.çıkışToolStripMenuItem_Click);
+            this.çıkışToolStripMenuItem.Click += new System.EventHandler(this.CikisToolStripMenuItem_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -259,24 +257,24 @@
             this.metroLabel2.TabIndex = 2;
             this.metroLabel2.Text = "Skor:";
             // 
-            // metroButton1
+            // btnMenu
             // 
-            this.metroButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.metroButton1.Location = new System.Drawing.Point(3, 3);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(75, 17);
-            this.metroButton1.TabIndex = 1;
-            this.metroButton1.TabStop = false;
-            this.metroButton1.Text = "Menu";
-            this.metroButton1.UseSelectable = true;
-            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
+            this.btnMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnMenu.Location = new System.Drawing.Point(3, 3);
+            this.btnMenu.Name = "btnMenu";
+            this.btnMenu.Size = new System.Drawing.Size(75, 17);
+            this.btnMenu.TabIndex = 1;
+            this.btnMenu.TabStop = false;
+            this.btnMenu.Text = "Menu";
+            this.btnMenu.UseSelectable = true;
+            this.btnMenu.Click += new System.EventHandler(this.btnMenu_Click);
             // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 132F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65.1715F));
-            this.tableLayoutPanel2.Controls.Add(this.metroButton1, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnMenu, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel1, 1, 0);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(23, 69);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -475,56 +473,49 @@
             this.metroTile2.UseSelectable = true;
             this.metroTile2.Visible = false;
             // 
-            // transparanRichTextBox1
+            // pnlConsole
             // 
-            this.transparanRichTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.transparanRichTextBox1.DetectUrls = false;
-            this.transparanRichTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.transparanRichTextBox1.Enabled = false;
-            this.transparanRichTextBox1.ForeColor = System.Drawing.Color.DarkOrange;
-            this.transparanRichTextBox1.Location = new System.Drawing.Point(0, 0);
-            this.transparanRichTextBox1.Name = "transparanRichTextBox1";
-            this.transparanRichTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.transparanRichTextBox1.ShortcutsEnabled = false;
-            this.transparanRichTextBox1.ShowSelectionMargin = true;
-            this.transparanRichTextBox1.Size = new System.Drawing.Size(685, 451);
-            this.transparanRichTextBox1.TabIndex = 25;
-            this.transparanRichTextBox1.TabStop = false;
-            this.transparanRichTextBox1.Text = "";
+            this.pnlConsole.BackColor = System.Drawing.Color.Transparent;
+            this.pnlConsole.Controls.Add(this.richTextBox1);
+            this.pnlConsole.Controls.Add(this.consoleTxtBx);
+            this.pnlConsole.Location = new System.Drawing.Point(0, -400);
+            this.pnlConsole.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlConsole.Name = "pnlConsole";
+            this.pnlConsole.Size = new System.Drawing.Size(501, 400);
+            this.pnlConsole.TabIndex = 26;
             // 
-            // panel2
+            // richTextBox1
             // 
-            this.panel2.Controls.Add(this.transparanRichTextBox1);
-            this.panel2.Controls.Add(this.consoleTxtBx);
-            this.panel2.Controls.Add(this.pctBxConsole);
-            this.panel2.Location = new System.Drawing.Point(16, 12);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(685, 471);
-            this.panel2.TabIndex = 26;
+            this.richTextBox1.BackColor = System.Drawing.SystemColors.Desktop;
+            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBox1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.richTextBox1.ForeColor = System.Drawing.Color.LawnGreen;
+            this.richTextBox1.Location = new System.Drawing.Point(0, 0);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.Size = new System.Drawing.Size(501, 385);
+            this.richTextBox1.TabIndex = 27;
+            this.richTextBox1.TabStop = false;
+            this.richTextBox1.Text = "";
             // 
             // consoleTxtBx
             // 
             this.consoleTxtBx.BackColor = System.Drawing.SystemColors.InfoText;
+            this.consoleTxtBx.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.consoleTxtBx.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.consoleTxtBx.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.consoleTxtBx.ForeColor = System.Drawing.Color.DarkOrange;
-            this.consoleTxtBx.Location = new System.Drawing.Point(0, 451);
+            this.consoleTxtBx.Location = new System.Drawing.Point(0, 385);
+            this.consoleTxtBx.Margin = new System.Windows.Forms.Padding(0);
             this.consoleTxtBx.MaxLength = 140;
-            this.consoleTxtBx.Multiline = true;
             this.consoleTxtBx.Name = "consoleTxtBx";
-            this.consoleTxtBx.Size = new System.Drawing.Size(685, 20);
+            this.consoleTxtBx.Size = new System.Drawing.Size(501, 15);
             this.consoleTxtBx.TabIndex = 26;
             this.consoleTxtBx.WordWrap = false;
             this.consoleTxtBx.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ConsoleTextBox_KeyDown);
-            // 
-            // pctBxConsole
-            // 
-            this.pctBxConsole.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pctBxConsole.Image = global::WindowsFormsApp.Properties.Resources.half_life_background_3;
-            this.pctBxConsole.Location = new System.Drawing.Point(0, 0);
-            this.pctBxConsole.Name = "pctBxConsole";
-            this.pctBxConsole.Size = new System.Drawing.Size(685, 471);
-            this.pctBxConsole.TabIndex = 27;
-            this.pctBxConsole.TabStop = false;
+            this.consoleTxtBx.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.consoleTxtBx_KeyPress);
             // 
             // AnaForm
             // 
@@ -532,7 +523,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(530, 196);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.pnlConsole);
             this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.metroTile2);
@@ -559,9 +550,8 @@
             this.flowLayoutPanel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pctBxConsole)).EndInit();
+            this.pnlConsole.ResumeLayout(false);
+            this.pnlConsole.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -577,7 +567,7 @@
         private MetroFramework.Controls.MetroLabel lblKalansure;
         private MetroFramework.Controls.MetroLabel lblSkor;
         private System.Windows.Forms.Label lblKalanSureBoard;
-        private MetroFramework.Controls.MetroButton metroButton1;
+        private MetroFramework.Controls.MetroButton btnMenu;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label lblMayinSayisiBoard;
         private MetroFramework.Controls.MetroLabel metroLabel1;
@@ -598,10 +588,9 @@
         private MetroFramework.Controls.MetroTile metroTile2;
         private System.Windows.Forms.ToolStripMenuItem skorTablosuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hakkındaToolStripMenuItem;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.PictureBox pctBxConsole;
-        private TransparanRichTextBox transparanRichTextBox1;
+        private System.Windows.Forms.Panel pnlConsole;
         private System.Windows.Forms.TextBox consoleTxtBx;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 
