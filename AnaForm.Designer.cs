@@ -34,6 +34,7 @@
             this.Menu = new MetroFramework.Controls.MetroContextMenu(this.components);
             this.yeniOyunToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.skorTablosuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hakkındaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.çıkışToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lblKalanSureBoard = new System.Windows.Forms.Label();
@@ -59,12 +60,17 @@
             this.metroToggle3 = new MetroFramework.Controls.MetroToggle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.metroTile2 = new MetroFramework.Controls.MetroTile();
-            this.hakkındaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.transparanRichTextBox1 = new WindowsFormsApp.TransparanRichTextBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.consoleTxtBx = new System.Windows.Forms.TextBox();
+            this.pctBxConsole = new System.Windows.Forms.PictureBox();
             this.Menu.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pctBxConsole)).BeginInit();
             this.SuspendLayout();
             // 
             // timer1
@@ -104,21 +110,28 @@
             // yeniOyunToolStripMenuItem
             // 
             this.yeniOyunToolStripMenuItem.Name = "yeniOyunToolStripMenuItem";
-            this.yeniOyunToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.yeniOyunToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.yeniOyunToolStripMenuItem.Text = "Yeni Oyun";
             this.yeniOyunToolStripMenuItem.Click += new System.EventHandler(this.yeniOyunToolStripMenuItem_Click);
             // 
             // skorTablosuToolStripMenuItem
             // 
             this.skorTablosuToolStripMenuItem.Name = "skorTablosuToolStripMenuItem";
-            this.skorTablosuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.skorTablosuToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.skorTablosuToolStripMenuItem.Text = "Skor Tablosu";
             this.skorTablosuToolStripMenuItem.Click += new System.EventHandler(this.skorTablosuToolStripMenuItem_Click);
+            // 
+            // hakkındaToolStripMenuItem
+            // 
+            this.hakkındaToolStripMenuItem.Name = "hakkındaToolStripMenuItem";
+            this.hakkındaToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.hakkındaToolStripMenuItem.Text = "Hakkında";
+            this.hakkındaToolStripMenuItem.Click += new System.EventHandler(this.hakkındaToolStripMenuItem_Click);
             // 
             // çıkışToolStripMenuItem
             // 
             this.çıkışToolStripMenuItem.Name = "çıkışToolStripMenuItem";
-            this.çıkışToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.çıkışToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.çıkışToolStripMenuItem.Text = "Çıkış";
             this.çıkışToolStripMenuItem.Click += new System.EventHandler(this.çıkışToolStripMenuItem_Click);
             // 
@@ -462,26 +475,71 @@
             this.metroTile2.UseSelectable = true;
             this.metroTile2.Visible = false;
             // 
-            // hakkındaToolStripMenuItem
+            // transparanRichTextBox1
             // 
-            this.hakkındaToolStripMenuItem.Name = "hakkındaToolStripMenuItem";
-            this.hakkındaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.hakkındaToolStripMenuItem.Text = "Hakkında";
-            this.hakkındaToolStripMenuItem.Click += new System.EventHandler(this.hakkındaToolStripMenuItem_Click);
+            this.transparanRichTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.transparanRichTextBox1.DetectUrls = false;
+            this.transparanRichTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.transparanRichTextBox1.Enabled = false;
+            this.transparanRichTextBox1.ForeColor = System.Drawing.Color.DarkOrange;
+            this.transparanRichTextBox1.Location = new System.Drawing.Point(0, 0);
+            this.transparanRichTextBox1.Name = "transparanRichTextBox1";
+            this.transparanRichTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.transparanRichTextBox1.ShortcutsEnabled = false;
+            this.transparanRichTextBox1.ShowSelectionMargin = true;
+            this.transparanRichTextBox1.Size = new System.Drawing.Size(685, 451);
+            this.transparanRichTextBox1.TabIndex = 25;
+            this.transparanRichTextBox1.TabStop = false;
+            this.transparanRichTextBox1.Text = "";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.transparanRichTextBox1);
+            this.panel2.Controls.Add(this.consoleTxtBx);
+            this.panel2.Controls.Add(this.pctBxConsole);
+            this.panel2.Location = new System.Drawing.Point(16, 12);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(685, 471);
+            this.panel2.TabIndex = 26;
+            // 
+            // consoleTxtBx
+            // 
+            this.consoleTxtBx.BackColor = System.Drawing.SystemColors.InfoText;
+            this.consoleTxtBx.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.consoleTxtBx.ForeColor = System.Drawing.Color.DarkOrange;
+            this.consoleTxtBx.Location = new System.Drawing.Point(0, 451);
+            this.consoleTxtBx.MaxLength = 140;
+            this.consoleTxtBx.Multiline = true;
+            this.consoleTxtBx.Name = "consoleTxtBx";
+            this.consoleTxtBx.Size = new System.Drawing.Size(685, 20);
+            this.consoleTxtBx.TabIndex = 26;
+            this.consoleTxtBx.WordWrap = false;
+            this.consoleTxtBx.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ConsoleTextBox_KeyDown);
+            // 
+            // pctBxConsole
+            // 
+            this.pctBxConsole.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pctBxConsole.Image = global::WindowsFormsApp.Properties.Resources.half_life_background_3;
+            this.pctBxConsole.Location = new System.Drawing.Point(0, 0);
+            this.pctBxConsole.Name = "pctBxConsole";
+            this.pctBxConsole.Size = new System.Drawing.Size(685, 471);
+            this.pctBxConsole.TabIndex = 27;
+            this.pctBxConsole.TabStop = false;
             // 
             // AnaForm
             // 
-            this.AcceptButton = this.btnBaslat;
             this.AccessibleName = "fatihertugral89@gmail.com";
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(530, 196);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.metroTile2);
             this.Controls.Add(this.metroTile1);
             this.Controls.Add(this.metroPanel1);
             this.Controls.Add(this.tableLayoutPanel2);
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(530, 196);
             this.Name = "AnaForm";
@@ -492,6 +550,7 @@
             this.Theme = MetroFramework.MetroThemeStyle.Default;
             this.TransparencyKey = System.Drawing.Color.LavenderBlush;
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AnaForm_KeyPress);
             this.Menu.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -500,6 +559,9 @@
             this.flowLayoutPanel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pctBxConsole)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -536,6 +598,10 @@
         private MetroFramework.Controls.MetroTile metroTile2;
         private System.Windows.Forms.ToolStripMenuItem skorTablosuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hakkındaToolStripMenuItem;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.PictureBox pctBxConsole;
+        private TransparanRichTextBox transparanRichTextBox1;
+        private System.Windows.Forms.TextBox consoleTxtBx;
     }
 }
 

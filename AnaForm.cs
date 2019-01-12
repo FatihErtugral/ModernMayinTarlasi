@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-// MatrisField sınıfında:  İki boyutlu integer bir matriste, mayınlı butonları temsil etmesi için random sayı ile "-1" ile kodlanıp matrise yerleştiriliyor
-// Aynı zamanda yerleştirilen "-1" çevreisindeki hücrelerin(indis) değeri bir arttırıylıyor.(mayın tarlası oyununun kuralları gereği rakamlar, çevresinde bulunan mayın  sayısını vermelidir.)
+// MatrisField sınıfında:  İki boyutlu integer bir matriste, mayınlı butonları temsil etmesi için random sayı ile "9" ile kodlanıp matrise yerleştiriliyor
+// Aynı zamanda yerleştirilen "9" çevreisindeki hücrelerin(indis) değeri bir arttırıylıyor.(mayın tarlası oyununun kuralları gereği rakamlar, çevresinde bulunan mayın  sayısını vermelidir.)
 // Matris oluşturulduktan sonra TarladakiButonlar sınıfında matris referans alınıp butonlar Dictionary yapısı içinde, kordinatları(key) kodlanarak yerleştiriliyor. Bu şekilde tasarlamak, buton boyutlarını rahat ayarlamamızı sağlıyor
 // buton çok geniş kapsamlı bir nesne olduğu için zayıf bilgisayarlarda oyun kasabilir. Onun yerine daha az özellikli bir buton nesnesi tanımlanabilirdi.
 namespace WindowsFormsApp
@@ -31,6 +31,7 @@ namespace WindowsFormsApp
             metroToggle2.Theme = this.Theme;
             metroToggle3.Style = this.Style;
             metroToggle3.Theme = this.Theme;
+            panel2.Visible = false;
             
         }
 
@@ -106,7 +107,7 @@ namespace WindowsFormsApp
             if (MayinTarlasi.AcilmamisMayinsizButon == 0)
             {
                 SkorTablosu.Ekle(takmaIsim, MayinTarlasi.skor + (saniye *2)); // kalan saniye 2 ile çarpılıp skora ekleniyor.
-                lblSkorBoard.Text = (MayinTarlasi.skor).ToString();
+                lblSkorBoard.Text = (MayinTarlasi.skor + (saniye *2)).ToString();
                 timer1.Stop();
                 SkorGoster();
                 return;
@@ -207,6 +208,27 @@ namespace WindowsFormsApp
                 StyleManager = StyleManager
             };
             ab.Show();
+        }
+
+        private void ConsoleTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                transparanRichTextBox1.Text += consoleTxtBx.Text;
+                consoleTxtBx.Text = "";
+                transparanRichTextBox1.SelectionStart = transparanRichTextBox1.TextLength;
+                transparanRichTextBox1.ScrollToCaret();
+                transparanRichTextBox1.Text += MayinTarlasi.MatrisPrint();
+            }
+        }
+
+        private void AnaForm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '"')
+            {
+                panel2.Visible = panel2.Visible ? false : true;
+                consoleTxtBx.Focus();
+            }
         }
     }
 }

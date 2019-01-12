@@ -64,6 +64,25 @@ namespace WindowsFormsApp
                     butonListesi.Add(new Point(satir, sutun), DinamikButonOlustur(matrisDizi._2DArray, satir, sutun, ref pnlPlatform));
         }
         ///////////////////////////////////////////////////////////////////
+        
+        public string MatrisPrint()
+        {
+            string matris ="";
+            for (int i = 0; i < this.dikeyButonSayisi; i++)
+            {
+                for (int k = 0; k < this.yatayButonSayisi; k++)
+                {
+                    matris += $"  [{matrisDizi._2DArray[k, i]}]";
+                }
+                matris += "\n";
+            }
+
+
+            return matris;
+        }
+
+        
+        ///////////////////////////////////////////////////////////////////
 
         // ikili dizi ile bir matris oluşturup kordinatları verildiğinde,
         // buton bilgileri işlenir ve ilgili kordinata panel içinde konumlandırılır
@@ -129,7 +148,7 @@ namespace WindowsFormsApp
             if (btn.Enabled == false || btn.BackgroundImage != null)
                 return;
 
-            if (btn.Tag.ToString() == "-1")
+            if (btn.Tag.ToString() == "9")
             {
                 BtnMayinliHepsiniAc();
                 //MessageBox.Show("Oyunu kaybettin!");
@@ -158,7 +177,7 @@ namespace WindowsFormsApp
                 BtnBosCevresindekiRakamlariAc(cord1 - 1, cord2 - 1);
                 return;
             }
-            else if (btn.Tag.ToString() != "0" && btn.Tag.ToString() != "-1")
+            else if (btn.Tag.ToString() != "0" && btn.Tag.ToString() != "9")
             {
 
                 btn.Text    = btn.Tag.ToString();
@@ -199,12 +218,12 @@ namespace WindowsFormsApp
         }
         ///////////////////////////////////////////////////////////////////
 
-        // Dictionary yapısı içindeki bütün -1 Tagını bulunduran butonları açıyor.
+        // Dictionary yapısı içindeki bütün 9 Tagını bulunduran butonları açıyor.
         public void BtnMayinliHepsiniAc()
         {
             foreach (var btn in butonListesi)
             {
-                if (btn.Value.Tag.ToString() == "-1")
+                if (btn.Value.Tag.ToString() == "9")
                 {
                     btn.Value.BackgroundImage = MayinImg;
                     btn.Value.Enabled = false;

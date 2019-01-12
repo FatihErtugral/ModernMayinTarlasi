@@ -63,6 +63,16 @@ namespace WindowsFormsApp.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
+        internal static System.Drawing.Bitmap half_life_background_3 {
+            get {
+                object obj = ResourceManager.GetObject("half_life_background_3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
         internal static System.Drawing.Bitmap mineBomb {
             get {
                 object obj = ResourceManager.GetObject("mineBomb", resourceCulture);
