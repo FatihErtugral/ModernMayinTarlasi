@@ -26,7 +26,15 @@ namespace WindowsFormsApp
         private Size    btnSize     = new Size(25, 25);
         private Image   MayinImg    = Resources.mineBomb;
         private Image   TedbirImg   = Resources.v_for_vendetta;
-        private ushort  btnMargin   = 2;
+        private Font    btnFont     = new Font("Let's go Digital", 12f);
+        private Padding  btnMargin  = new Padding(2);
+        private Padding  btnPadding = new Padding(0);
+
+        private Point _Point = new Point(0, 0); 
+
+        private MouseEventHandler   btnSagClickHandler;
+        private EventHandler        btnClickHandler;
+        private PaintEventHandler   btnDisableRenkHandler;
 
         public int  AcilmamisMayinsizButon  = 0;
         public int  skor        = 0;
@@ -41,11 +49,15 @@ namespace WindowsFormsApp
             this.dikeyButonSayisi   = dikeyButonSayisi;
             this.mayinliButonSayisi = mayinliButonSayisi;
 
-            mayinliButonRengi   = Color.FromArgb(42, 42, 42);
-            bosAlanButonRengi   = Color.FromArgb(242, 235, 199);
-            numaraliButonRengi  = Color.FromArgb(51, 55, 69);
-            butonNumaraRengi    = Color.FromArgb(246, 247, 146);
-            butonAnaRenk        = Color.FromArgb(211, 99, 128);
+            btnClickHandler         = new EventHandler(BtnSolTik);
+            btnSagClickHandler      = new MouseEventHandler(BtnSagTik);
+            btnDisableRenkHandler   = new PaintEventHandler(BtnDisableRengi);
+
+            mayinliButonRengi   = Color.FromArgb(42,    42,     42);
+            bosAlanButonRengi   = Color.FromArgb(242,   235,    199);
+            numaraliButonRengi  = Color.FromArgb(51,    55,     69);
+            butonNumaraRengi    = Color.FromArgb(246,   247,    146);
+            butonAnaRenk        = Color.FromArgb(211,   99,     128);
             AcilmamisMayinsizButon = this.yatayButonSayisi * this.dikeyButonSayisi - this.mayinliButonSayisi;
  
         }
@@ -61,8 +73,14 @@ namespace WindowsFormsApp
             pnlPlatform.Height  = this.dikeyButonSayisi * btnSize.Height + this.dikeyButonSayisi * 2;
 
             for (int satir = 0; satir < this.yatayButonSayisi; satir++)
+            {
                 for (int sutun = 0; sutun < this.dikeyButonSayisi; sutun++)
-                    butonListesi.Add(new Point(satir, sutun), DinamikButonOlustur(matrisDizi._2DArray, satir, sutun, ref pnlPlatform));
+                {
+                    _Point.X = satir;
+                    _Point.Y = sutun;
+                    butonListesi.Add(_Point, DinamikButonOlustur(matrisDizi._2DArray, satir, sutun, ref pnlPlatform));
+                }
+            }
         }
         ///////////////////////////////////////////////////////////////////
 
@@ -134,23 +152,22 @@ namespace WindowsFormsApp
 
             btn.Tag     = matrisHarita[kordinat_X, kordinat_Y];
             btn.Name    = $"{kordinat_X},{kordinat_Y}"; // Kordinatlar isimlerden yakalanıyor
-            btn.Font    = new Font("Let's go Digital", 12f);
+            //btn.Font    = btnFont;
             btn.Size    = btnSize;
-            btn.Margin  = new Padding(btnMargin);
-            btn.Padding = new Padding(0);
+            btn.Margin  = btnMargin;
+            btn.Padding = btnPadding;
             btn.TabStop = false;
             btn.TabIndex    = 10;
             btn.Enabled     = true;
             btn.FlatStyle   = FlatStyle.Flat;
             btn.BackColor   = butonAnaRenk;//Color.OliveDrab;
 
-            btn.Location    = new Point{
-                X = (kordinat_X * (btn.Height + btnMargin)),
-                Y = (kordinat_Y * (btn.Width + btnMargin))
-            };
+            _Point.X = (kordinat_X * (btn.Height + 2));
+            _Point.Y = (kordinat_Y * (btn.Width + 2));
+            btn.Location = _Point;
 
-            btn.Click   += new EventHandler(BtnSolTik);
-            btn.MouseUp += new MouseEventHandler(BtnSagTik);
+            btn.Click   += btnClickHandler;
+            btn.MouseUp += btnSagClickHandler;
 
             pnlPlatform.Controls.Add(btn);
             return btn;
@@ -178,8 +195,9 @@ namespace WindowsFormsApp
 
             if (e.Button == MouseButtons.Right)
             {
-                if (btn.BackgroundImage == null) { btn.BackgroundImage = TedbirImg; }
-                else { btn.BackgroundImage = null; }
+                if (btn.BackgroundImage == null)
+                        { btn.BackgroundImage = TedbirImg; }
+                else    { btn.BackgroundImage = null; }
             }
         }
         ///////////////////////////////////////////////////////////////////
@@ -228,7 +246,7 @@ namespace WindowsFormsApp
                 btn.Enabled = false;
                 btn.BackColor = numaraliButonRengi;
                 btn.ForeColor = butonNumaraRengi;
-                btn.Paint   += new PaintEventHandler(BtnDisableRengi);
+                btn.Paint   += btnDisableRenkHandler;
 
                 //////////////////////////
                 skor += (int)btn.Tag + 2;
@@ -237,7 +255,7 @@ namespace WindowsFormsApp
         }
         ///////////////////////////////////////////////////////////////////
 
-
+        
         private void BtnBosDegerAc(int kordinat_X, int kordinat_Y)
         {
             Button kntrlBtn;
@@ -250,8 +268,9 @@ namespace WindowsFormsApp
 
             if (matrisDizi._2DArray[kordinat_X, kordinat_Y] != 0)
                 return;
-
-            butonListesi.TryGetValue(new Point(kordinat_X, kordinat_Y), out kntrlBtn);
+            _Point.X = kordinat_X;
+            _Point.Y = kordinat_Y;
+            butonListesi.TryGetValue(_Point, out kntrlBtn);
 
             if (kntrlBtn.Enabled == false)
                 return;
@@ -287,8 +306,9 @@ namespace WindowsFormsApp
             if (kordinat_X >= yatayButonSayisi ||
                 kordinat_Y >= dikeyButonSayisi)
                 return;
-
-            butonListesi.TryGetValue(new Point(kordinat_X, kordinat_Y), out kntrlBtn);
+            _Point.X = kordinat_X;
+            _Point.Y = kordinat_Y;
+            butonListesi.TryGetValue(_Point, out kntrlBtn);
 
             if (kntrlBtn.Enabled == false)
                 return;
@@ -303,7 +323,7 @@ namespace WindowsFormsApp
                 kntrlBtn.Text       = kntrlBtn.Tag.ToString();
                 kntrlBtn.BackColor  = numaraliButonRengi;
                 kntrlBtn.ForeColor  = butonNumaraRengi;
-                kntrlBtn.Paint      += new PaintEventHandler(BtnDisableRengi);
+                kntrlBtn.Paint      += btnDisableRenkHandler;
                 kntrlBtn.Enabled    = false;
 
                 ///////////

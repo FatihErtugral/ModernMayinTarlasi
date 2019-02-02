@@ -65,20 +65,20 @@ namespace WindowsFormsApp
            
             if (metroToggle1.CheckState == CheckState.Checked)
             {
-                mayinSayisi     = 15;
+                mayinSayisi     = 25;
                 saniye          = 100;
                 MayinTarlasi    = new TarladakiButonlar(22, 10, mayinSayisi);
 
             }
             else if (metroToggle2.CheckState == CheckState.Checked)
             {
-                mayinSayisi     = 30;
+                mayinSayisi     = 40;
                 saniye          = 150;
                 MayinTarlasi    = new TarladakiButonlar(22, 15, mayinSayisi);
             }
             else if (metroToggle3.CheckState == CheckState.Checked)
             {
-                mayinSayisi     = 45;
+                mayinSayisi     = 55;
                 saniye          = 200;
                 MayinTarlasi    = new TarladakiButonlar(22, 20, mayinSayisi);
             }
