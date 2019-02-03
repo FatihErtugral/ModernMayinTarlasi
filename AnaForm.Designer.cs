@@ -366,7 +366,7 @@
             this.flowLayoutPanel2.Controls.Add(this.metroToggle2);
             this.flowLayoutPanel2.Controls.Add(this.metroLabel6);
             this.flowLayoutPanel2.Controls.Add(this.metroToggle3);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(388, 91);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(388, 86);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(119, 68);
             this.flowLayoutPanel2.TabIndex = 22;
@@ -455,7 +455,7 @@
             this.panel1.Controls.Add(this.btnBaslat);
             this.panel1.Controls.Add(this.txtBxTakmaIsim);
             this.panel1.Controls.Add(this.metroLabel5);
-            this.panel1.Location = new System.Drawing.Point(159, 70);
+            this.panel1.Location = new System.Drawing.Point(157, 70);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(216, 100);
             this.panel1.TabIndex = 23;

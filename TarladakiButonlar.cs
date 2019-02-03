@@ -5,69 +5,73 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using ModernMayinTarlasi.Properties;
+using System.Reflection;
 
 namespace WindowsFormsApp
 {
     class TarladakiButonlar
     {
-        public Dictionary<Point, Button> butonListesi;
-        private MatrisField2D matrisDizi;
+        private Dictionary<Point, GameMineButton> butonListesi;
+        private GameMineButton  _btn;
+        private MatrisField2D   matrisDizi;
 
+        // Game field
         private ushort yatayButonSayisi;
         private ushort dikeyButonSayisi;
         private ushort mayinliButonSayisi;
 
-        private Color mayinliButonRengi;
-        private Color bosAlanButonRengi;
-        private Color numaraliButonRengi;
-        private Color butonNumaraRengi;
-        private Color butonAnaRenk;
 
-        private Size    btnSize     = new Size(25, 25);
-        private Image   MayinImg    = Resources.mineBomb;
-        private Image   TedbirImg   = Resources.v_for_vendetta;
-        private Font    btnFont     = new Font("Let's go Digital", 12f);
+        // Game Button property
+        private Color mayinliButonRengi  = Color.FromArgb(42,    42,     42);
+        private Color bosAlanButonRengi  = Color.FromArgb(242,   235,    199); 
+        private Color numaraliButonRengi = Color.FromArgb(51,    55,     69);     
+        private Color butonNumaraRengi   = Color.FromArgb(246,   247,    146); 
+        private Color butonAnaRenk       = Color.FromArgb(211,   99,     128);
+
+         
+        private Size    btnSize   = new Size(25, 25);
+        private Image   mayinImg  = Resources.mineBomb;
+        private Image   tedbirImg = Resources.v_for_vendetta;
+        private Font    btnFont   = new Font("Let's go Digital", 12f);
+        private Point   _Point    = new Point(0, 0); 
         private Padding  btnMargin  = new Padding(2);
         private Padding  btnPadding = new Padding(0);
 
-        private Point _Point = new Point(0, 0); 
-
+        // Game Button Event 
         private MouseEventHandler   btnSagClickHandler;
         private EventHandler        btnClickHandler;
         private PaintEventHandler   btnDisableRenkHandler;
-
+        
+        // Game win lose property 
         public int  AcilmamisMayinsizButon  = 0;
         public int  skor        = 0;
         public bool kaybetme    = false;
-
         ///////////////////////////////////////////////////////////////////
-
-        ///////////////////////////////////////////////////////////////////
+        
+        /// Constructor
         public TarladakiButonlar(ushort yatayButonSayisi, ushort dikeyButonSayisi, ushort mayinliButonSayisi)
         {
+            
+            
             this.yatayButonSayisi   = yatayButonSayisi;
             this.dikeyButonSayisi   = dikeyButonSayisi;
             this.mayinliButonSayisi = mayinliButonSayisi;
+            AcilmamisMayinsizButon = this.yatayButonSayisi * this.dikeyButonSayisi - this.mayinliButonSayisi;
 
             btnClickHandler         = new EventHandler(BtnSolTik);
             btnSagClickHandler      = new MouseEventHandler(BtnSagTik);
             btnDisableRenkHandler   = new PaintEventHandler(BtnDisableRengi);
 
-            mayinliButonRengi   = Color.FromArgb(42,    42,     42);
-            bosAlanButonRengi   = Color.FromArgb(242,   235,    199);
-            numaraliButonRengi  = Color.FromArgb(51,    55,     69);
-            butonNumaraRengi    = Color.FromArgb(246,   247,    146);
-            butonAnaRenk        = Color.FromArgb(211,   99,     128);
-            AcilmamisMayinsizButon = this.yatayButonSayisi * this.dikeyButonSayisi - this.mayinliButonSayisi;
- 
+            CreateGameButton();
         }
         ///////////////////////////////////////////////////////////////////
 
+        //
         public void MatristekiVeriyiButonlaraCevirListeYap(ref MetroPanel pnlPlatform)
         {
-            kaybetme    = false;
-            matrisDizi  = new MatrisField2D(this.yatayButonSayisi, this.dikeyButonSayisi, this.mayinliButonSayisi);
-            butonListesi = new Dictionary<Point, Button>();
+            kaybetme     = false;
+            matrisDizi   = new MatrisField2D(this.yatayButonSayisi, this.dikeyButonSayisi, this.mayinliButonSayisi);
+            butonListesi = new Dictionary<Point, GameMineButton>();
 
             pnlPlatform.Width   = this.yatayButonSayisi * btnSize.Width + this.yatayButonSayisi * 2;
             pnlPlatform.Height  = this.dikeyButonSayisi * btnSize.Height + this.dikeyButonSayisi * 2;
@@ -93,7 +97,7 @@ namespace WindowsFormsApp
             {
                 if (btn.Value.Tag.ToString() == "9")
                 {
-                    btn.Value.BackgroundImage = TedbirImg;
+                    btn.Value.BackgroundImage = tedbirImg;
                     //btn.Value.Enabled = false;
                     //btn.Value.BackColor = mayinliButonRengi;
                 }
@@ -133,51 +137,64 @@ namespace WindowsFormsApp
         }
 
         #endregion
-
         ///////////////////////////////////////////////////////////////////
+
+        // Ramde bir adet buton heap kısmına uluşturulur 
+        // GameMineButton sınıfı Prototype desenini üzerinde taşır
+        // Daha sonra oluşturulcak butonlar bu butondan deep copy yöntemiyle oluşturulur.
+        private void CreateGameButton()
+        {
+            _btn   = new GameMineButton();
+
+            _btn.Size    = btnSize;
+            _btn.Margin  = btnMargin;
+            _btn.Padding = btnPadding;
+            _btn.TabStop = false;
+            _btn.TabIndex   = 10;
+            _btn.Enabled    = true;
+            _btn.FlatStyle  = FlatStyle.Flat;
+            _btn.BackColor  = butonAnaRenk;//Color.OliveDrab;
+            
+            _btn.BackgroundImageLayout = ImageLayout.Stretch;
+            
+        }
+        ///////////////////////////////////////////////////////////////////
+
         /// <summary>
         /// ikili dizi ile bir matris oluşturup kordinatları verildiğinde,
-        /// buton bilgileri işlenir ve ilgili kordinata panel içinde konumlandırılır
+        /// buton bilgileri işlenir ve ilgili kordinata panel içinde konumlandırılır.
+        /// Prototype Tasarım Deseni kullanılarak, butonlar "new" ile değil "deep copy" yöntemiyle üretilir.
         /// </summary>
         /// <param name="matrisHarita">MatrisField sınıfında oluşturulan diziyi alır</param>
         /// <param name="kordinat_X">Dizinin x indisi arr[x,y]</param>
         /// <param name="kordinat_Y">Dizinin y indisi arr[x,y]</param>
         /// <param name="pnlPlatform">AnaForm'da oluşturulan panelin referansı</param>
         /// <returns>Dictonary listesine eklemek için Buton nesnesi geri döndürür</returns>
-        private Button DinamikButonOlustur(int[,] matrisHarita, int kordinat_X, int kordinat_Y, ref MetroPanel pnlPlatform)
+        private GameMineButton DinamikButonOlustur(int[,] matrisHarita, int kordinat_X, int kordinat_Y, ref MetroPanel pnlPlatform)
         {
-            Button btn = new Button();
+            GameMineButton btn = (GameMineButton)_btn.Clone();
 
-            btn.BackgroundImageLayout = ImageLayout.Stretch;
-
-            btn.Tag     = matrisHarita[kordinat_X, kordinat_Y];
-            btn.Name    = $"{kordinat_X},{kordinat_Y}"; // Kordinatlar isimlerden yakalanıyor
-            //btn.Font    = btnFont;
-            btn.Size    = btnSize;
-            btn.Margin  = btnMargin;
-            btn.Padding = btnPadding;
-            btn.TabStop = false;
-            btn.TabIndex    = 10;
-            btn.Enabled     = true;
-            btn.FlatStyle   = FlatStyle.Flat;
-            btn.BackColor   = butonAnaRenk;//Color.OliveDrab;
-
+            btn.Tag = matrisHarita[kordinat_X, kordinat_Y];
+            btn.Name = $"{kordinat_X},{kordinat_Y}"; // Kordinatlar isimlerden yakalanıyor
+            
             _Point.X = (kordinat_X * (btn.Height + 2));
             _Point.Y = (kordinat_Y * (btn.Width + 2));
-            btn.Location = _Point;
+            btn.Location    = _Point;
 
-            btn.Click   += btnClickHandler;
-            btn.MouseUp += btnSagClickHandler;
+            btn.Click      += btnClickHandler;
+            btn.MouseUp    += btnSagClickHandler;
 
             pnlPlatform.Controls.Add(btn);
             return btn;
         }
         ///////////////////////////////////////////////////////////////////
+        
+        
 
         // Sistem tarafından butonların disable rengi sabittir, değiştirmek için yeniden çizdirmek gerekiyor
         private void BtnDisableRengi(object sender, PaintEventArgs e)
         {
-            Button btn = (Button)sender;
+            GameMineButton btn = (GameMineButton)sender;
 
             TextFormatFlags flags = TextFormatFlags.HorizontalCenter |
                                     TextFormatFlags.VerticalCenter |
@@ -189,14 +206,14 @@ namespace WindowsFormsApp
         // Sağ tıklama uyarı işaret koymak için
         private void BtnSagTik(object sender, MouseEventArgs e)
         {
-            Button btn = (Button)sender;
+            GameMineButton btn = (GameMineButton)sender;
 
             if (btn.Text != "") return;
 
             if (e.Button == MouseButtons.Right)
             {
                 if (btn.BackgroundImage == null)
-                        { btn.BackgroundImage = TedbirImg; }
+                        { btn.BackgroundImage = tedbirImg; }
                 else    { btn.BackgroundImage = null; }
             }
         }
@@ -205,7 +222,7 @@ namespace WindowsFormsApp
         private void BtnSolTik(object sender, EventArgs e)
         {
 
-            Button btn = (Button)sender;
+            GameMineButton btn = (GameMineButton)sender;
 
             if (btn.Enabled == false || btn.BackgroundImage != null)
                 return;
@@ -258,7 +275,7 @@ namespace WindowsFormsApp
         
         private void BtnBosDegerAc(int kordinat_X, int kordinat_Y)
         {
-            Button kntrlBtn;
+            GameMineButton kntrlBtn;
             if (kordinat_X < 0 || kordinat_Y < 0)
                 return;
 
@@ -288,7 +305,7 @@ namespace WindowsFormsApp
             {
                 if (btn.Value.Tag.ToString() == "9")
                 {
-                    btn.Value.BackgroundImage = MayinImg;
+                    btn.Value.BackgroundImage = mayinImg;
                     btn.Value.Enabled = false;
                     btn.Value.BackColor = mayinliButonRengi;
                 }
@@ -299,7 +316,7 @@ namespace WindowsFormsApp
 
         private void BtnBosCevresindekiRakamlariAc(int kordinat_X, int kordinat_Y)
         {
-            Button kntrlBtn;
+            GameMineButton kntrlBtn;
 
             if (kordinat_X < 0 || kordinat_Y < 0)
                 return;
@@ -323,7 +340,7 @@ namespace WindowsFormsApp
                 kntrlBtn.Text       = kntrlBtn.Tag.ToString();
                 kntrlBtn.BackColor  = numaraliButonRengi;
                 kntrlBtn.ForeColor  = butonNumaraRengi;
-                kntrlBtn.Paint      += btnDisableRenkHandler;
+                //kntrlBtn.Paint      += btnDisableRenkHandler;
                 kntrlBtn.Enabled    = false;
 
                 ///////////
@@ -332,4 +349,52 @@ namespace WindowsFormsApp
             }
         }
     }
+    //---------------------------------------------------------------------------------
+
+    //prototype patterni kullanırken deep copy olabilecek olan nesnelerimizin türemesi gereken interface
+    public interface IPrototype
+    {
+        IPrototype Clone(object val=null);
+    }
+    //---------------------------------------------------------------------------------
+
+    [Serializable]
+    public class GameMineButton : Button, IPrototype
+    {
+        public IPrototype Clone(object val = null)
+        {
+            GameMineButton copyButton = Activator.CreateInstance<GameMineButton>();//önce GameMineButton Bir instance oluşturulur.
+            PropertyInfo[] piList = this.GetType()//mevcut içerinde bulunduğumuz sınıfın property leri çekilir.
+                .GetProperties();
+
+            //mevcut property' lerden kopyalanmak istenen property ler belirtilir. Ancak bu örnekte hepsine gerek yoktur.
+            //çünkü zaten oluşturuduğumuz copy sınıfının default değerleri içerisinde bulunduğumuz sınıf tarafından değiştirilmemektedir.
+            //uygulama gereksinimine göre hepsi de kopyalanabilir.
+           
+            List<string> lst=new List<string>();
+            lst.Add("Font");                        lst.Add("FlatStyle");
+            lst.Add("Size");                        lst.Add("BackColor");
+            lst.Add("Margin");                      lst.Add("BackgroundImage");
+            lst.Add("Padding");                     lst.Add("Text");
+            lst.Add("TabStop");                     lst.Add("ForeColor");
+            lst.Add("TabIndex");                    lst.Add("Paint");
+            lst.Add("Enabled");                     lst.Add("Tag");
+            lst.Add("BackgroundImageLayout");
+
+            foreach (PropertyInfo pi in piList.Where(i=>lst.Contains(i.Name)))//içerisinde bulunduğumuz sınıfın propertyleri içerisinde dönülmeye başlanır.
+            {
+                if (pi.GetValue(copyButton, null) != pi.GetValue(this, null))//sırayla yeni copy nesnemize atanır.
+                {
+                    if (pi.CanWrite)
+                    {
+                        pi.SetValue(copyButton, pi.GetValue(this, null), null);
+                    }
+                }
+            }
+
+            return copyButton;
+        }
+    }
+    //---------------------------------------------------------------------------------
+
 }

@@ -5,7 +5,6 @@ using System.Windows.Forms;
 // MatrisField sınıfında:  İki boyutlu integer bir matriste, mayınlı butonları temsil etmesi için random sayı ile "9" ile kodlanıp matrise yerleştiriliyor
 // Aynı zamanda yerleştirilen "9" çevreisindeki hücrelerin(indis) değeri bir arttırıylıyor.(mayın tarlası oyununun kuralları gereği rakamlar, çevresinde bulunan mayın  sayısını vermelidir.)
 // Matris oluşturulduktan sonra TarladakiButonlar sınıfında matris referans alınıp butonlar Dictionary yapısı içinde, kordinatları(key) kodlanarak yerleştiriliyor. Bu şekilde tasarlamak, buton boyutlarını rahat ayarlamamızı sağlıyor
-// buton çok geniş kapsamlı bir nesne olduğu için zayıf bilgisayarlarda oyun kasabilir. Onun yerine daha az özellikli bir buton nesnesi tanımlanabilirdi.
 namespace WindowsFormsApp
 {
     public partial class AnaForm : MetroFramework.Forms.MetroForm
