@@ -13,7 +13,7 @@ namespace WindowsFormsApp
     {
         private Dictionary<Point, GameMineButton> butonListesi;
         private GameMineButton  _btn;
-        private MatrisField2D   matrisDizi;
+        private MatrisField2D   _matrisDizi;
 
         // Game field
         private ushort yatayButonSayisi;
@@ -29,18 +29,17 @@ namespace WindowsFormsApp
         private Color butonAnaRenk       = Color.FromArgb(211,   99,     128);
 
          
-        private Size    btnSize   = new Size(25, 25);
-        private Image   mayinImg  = Resources.mineBomb;
-        private Image   tedbirImg = Resources.v_for_vendetta;
-        private Font    btnFont   = new Font("Let's go Digital", 12f);
-        private Point   _Point    = new Point(0, 0); 
-        private Padding  btnMargin  = new Padding(2);
-        private Padding  btnPadding = new Padding(0);
+        private Size    _btnSize   = new Size(25, 25);
+        private Image   _mayinImg  = Resources.mineBomb;
+        private Image   _tedbirImg = Resources.v_for_vendetta;
+        private Font    _btnFont   = new Font("Let's go Digital", 12f);
+        private Point   _Point     = new Point(0, 0); 
+        private Padding  _btnMargin  = new Padding(2);
+        private Padding  _btnPadding = new Padding(0);
 
         // Game Button Event 
         private MouseEventHandler   btnSagClickHandler;
         private EventHandler        btnClickHandler;
-        private PaintEventHandler   btnDisableRenkHandler;
         
         // Game win lose property 
         public int  AcilmamisMayinsizButon  = 0;
@@ -60,7 +59,6 @@ namespace WindowsFormsApp
 
             btnClickHandler         = new EventHandler(BtnSolTik);
             btnSagClickHandler      = new MouseEventHandler(BtnSagTik);
-            btnDisableRenkHandler   = new PaintEventHandler(BtnDisableRengi);
 
             CreateGameButton();
         }
@@ -70,11 +68,11 @@ namespace WindowsFormsApp
         public void MatristekiVeriyiButonlaraCevirListeYap(ref MetroPanel pnlPlatform)
         {
             kaybetme     = false;
-            matrisDizi   = new MatrisField2D(this.yatayButonSayisi, this.dikeyButonSayisi, this.mayinliButonSayisi);
+            _matrisDizi   = new MatrisField2D(this.yatayButonSayisi, this.dikeyButonSayisi, this.mayinliButonSayisi);
             butonListesi = new Dictionary<Point, GameMineButton>();
 
-            pnlPlatform.Width   = this.yatayButonSayisi * btnSize.Width + this.yatayButonSayisi * 2;
-            pnlPlatform.Height  = this.dikeyButonSayisi * btnSize.Height + this.dikeyButonSayisi * 2;
+            pnlPlatform.Width   = this.yatayButonSayisi * _btnSize.Width + this.yatayButonSayisi * 2;
+            pnlPlatform.Height  = this.dikeyButonSayisi * _btnSize.Height + this.dikeyButonSayisi * 2;
 
             for (int satir = 0; satir < this.yatayButonSayisi; satir++)
             {
@@ -82,7 +80,7 @@ namespace WindowsFormsApp
                 {
                     _Point.X = satir;
                     _Point.Y = sutun;
-                    butonListesi.Add(_Point, DinamikButonOlustur(matrisDizi._2DArray, satir, sutun, ref pnlPlatform));
+                    butonListesi.Add(_Point, DinamikButonOlustur(_matrisDizi._2DArray, satir, sutun, ref pnlPlatform));
                 }
             }
         }
@@ -97,7 +95,7 @@ namespace WindowsFormsApp
             {
                 if (btn.Value.Tag.ToString() == "9")
                 {
-                    btn.Value.BackgroundImage = tedbirImg;
+                    btn.Value.BackgroundImage = _tedbirImg;
                     //btn.Value.Enabled = false;
                     //btn.Value.BackColor = mayinliButonRengi;
                 }
@@ -129,7 +127,7 @@ namespace WindowsFormsApp
             {
                 for (int k = 0; k < this.yatayButonSayisi; k++)
                 {
-                    matris += $" [{matrisDizi._2DArray[k, i]}]";
+                    matris += $" [{_matrisDizi._2DArray[k, i]}]";
                 }
                 matris += "\n";
             }
@@ -146,9 +144,9 @@ namespace WindowsFormsApp
         {
             _btn   = new GameMineButton();
 
-            _btn.Size    = btnSize;
-            _btn.Margin  = btnMargin;
-            _btn.Padding = btnPadding;
+            _btn.Size    = _btnSize;
+            _btn.Margin  = _btnMargin;
+            _btn.Padding = _btnPadding;
             _btn.TabStop = false;
             _btn.TabIndex   = 10;
             _btn.Enabled    = true;
@@ -188,20 +186,6 @@ namespace WindowsFormsApp
             return btn;
         }
         ///////////////////////////////////////////////////////////////////
-        
-        
-
-        // Sistem tarafından butonların disable rengi sabittir, değiştirmek için yeniden çizdirmek gerekiyor
-        private void BtnDisableRengi(object sender, PaintEventArgs e)
-        {
-            GameMineButton btn = (GameMineButton)sender;
-
-            TextFormatFlags flags = TextFormatFlags.HorizontalCenter |
-                                    TextFormatFlags.VerticalCenter |
-                                    TextFormatFlags.WordBreak;   // center the text
-            TextRenderer.DrawText(e.Graphics, btn.Text, btn.Font, e.ClipRectangle, btn.ForeColor, flags);
-        }
-        ///////////////////////////////////////////////////////////////////
 
         // Sağ tıklama uyarı işaret koymak için
         private void BtnSagTik(object sender, MouseEventArgs e)
@@ -213,7 +197,7 @@ namespace WindowsFormsApp
             if (e.Button == MouseButtons.Right)
             {
                 if (btn.BackgroundImage == null)
-                        { btn.BackgroundImage = tedbirImg; }
+                        { btn.BackgroundImage = _tedbirImg; }
                 else    { btn.BackgroundImage = null; }
             }
         }
@@ -263,7 +247,6 @@ namespace WindowsFormsApp
                 btn.Enabled = false;
                 btn.BackColor = numaraliButonRengi;
                 btn.ForeColor = butonNumaraRengi;
-                btn.Paint   += btnDisableRenkHandler;
 
                 //////////////////////////
                 skor += (int)btn.Tag + 2;
@@ -283,7 +266,7 @@ namespace WindowsFormsApp
                 kordinat_Y >= dikeyButonSayisi)
                 return;
 
-            if (matrisDizi._2DArray[kordinat_X, kordinat_Y] != 0)
+            if (_matrisDizi._2DArray[kordinat_X, kordinat_Y] != 0)
                 return;
             _Point.X = kordinat_X;
             _Point.Y = kordinat_Y;
@@ -305,7 +288,7 @@ namespace WindowsFormsApp
             {
                 if (btn.Value.Tag.ToString() == "9")
                 {
-                    btn.Value.BackgroundImage = mayinImg;
+                    btn.Value.BackgroundImage = _mayinImg;
                     btn.Value.Enabled = false;
                     btn.Value.BackColor = mayinliButonRengi;
                 }
@@ -340,7 +323,6 @@ namespace WindowsFormsApp
                 kntrlBtn.Text       = kntrlBtn.Tag.ToString();
                 kntrlBtn.BackColor  = numaraliButonRengi;
                 kntrlBtn.ForeColor  = butonNumaraRengi;
-                //kntrlBtn.Paint      += btnDisableRenkHandler;
                 kntrlBtn.Enabled    = false;
 
                 ///////////
@@ -393,6 +375,33 @@ namespace WindowsFormsApp
             }
 
             return copyButton;
+        }
+        ///////////////////////////////////////////////////////////////////
+        
+
+        // Butonun Disabled rengi sistemde gri ve sabit, OnPaint override edilerek yeniden biçimlendiriliyor.
+        protected override void OnPaint(PaintEventArgs pe)
+        {
+            if( base.Enabled )
+            {
+                base.OnPaint(pe);
+            }
+            else
+            {
+                // Calling the base class OnPaint
+                base.OnPaint(pe);
+                // Setup the Formatting for the text
+                StringFormat formatText = new StringFormat(StringFormatFlags.NoClip);
+                formatText.LineAlignment = StringAlignment.Center;
+                formatText.Alignment = StringAlignment.Center;
+                // Drawing the button yoursel. The background is color
+                // pe.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(51,    55,     69)), pe.ClipRectangle);
+                // Draw the line around the button
+                // pe.Graphics.DrawRectangle(new Pen(Color.Black, 1), 0, 0, base.Width - 1, base.Height - 1);
+                // Draw the text in the button in color
+                pe.Graphics.DrawString(base.Text, base.Font, new SolidBrush(base.ForeColor),
+                    new RectangleF(0F, 0F, base.Width, base.Height),  formatText);
+            }
         }
     }
     //---------------------------------------------------------------------------------
