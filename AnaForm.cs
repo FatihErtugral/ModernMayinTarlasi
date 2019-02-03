@@ -22,7 +22,6 @@ namespace WindowsFormsApp
         public AnaForm()
         {
             InitializeComponent();
-
             //Konum
             pencereyiKonumlandir();
 
@@ -38,12 +37,18 @@ namespace WindowsFormsApp
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            metroToggle1.Style = this.Style;
-            metroToggle1.Theme = this.Theme;
-            metroToggle2.Style = this.Style;
-            metroToggle2.Theme = this.Theme;
-            metroToggle3.Style = this.Style;
-            metroToggle3.Theme = this.Theme;
+            /////////////////////////////////////////////////////////////////////////////////////////////////
+            titleBaslikAltCizgi.Theme = txtBxTakmaIsim.Theme = lblSkor.Theme =
+            toggleKolay.Theme   = toggleOrta.Theme      = toggleZor.Theme       = btnMenu.Theme = 
+            lblKalansure.Theme  = lblKolay.Theme        = lblMayinSayisi.Theme  = lblOrta.Theme = 
+            lblTemizAlan.Theme  = lblTakmaIsım.Theme    = lblTemizAlan.Theme    = lblZor.Theme  = this.Theme;
+            /////////////////////////////////////////////////////////////////////////////////////////////////
+            titleBaslikAltCizgi.Style = txtBxTakmaIsim.Style = lblSkor.Style =
+            toggleKolay.Style   = toggleOrta.Style      = toggleZor.Style       = btnMenu.Style = 
+            lblKalansure.Style  = lblKolay.Style        = lblMayinSayisi.Style  = lblOrta.Style = 
+            lblTemizAlan.Style  = lblTakmaIsım.Style    = lblTemizAlan.Style    = lblZor.Style  = this.Style;
+            /////////////////////////////////////////////////////////////////////////////////////////////////
+            this.ForeColor = Color.White;
         }
 
         private void yeniOyunToolStripMenuItem_Click(object sender, EventArgs e)
@@ -64,20 +69,20 @@ namespace WindowsFormsApp
            
             #region Oyun zorluk derecesi
            
-            if (metroToggle1.CheckState == CheckState.Checked)
+            if (toggleKolay.CheckState == CheckState.Checked)
             {
                 mayinSayisi     = 25;
                 saniye          = 100;
                 MayinTarlasi    = new TarladakiButonlar(22, 10, mayinSayisi);
 
             }
-            else if (metroToggle2.CheckState == CheckState.Checked)
+            else if (toggleOrta.CheckState == CheckState.Checked)
             {
                 mayinSayisi     = 40;
                 saniye          = 150;
                 MayinTarlasi    = new TarladakiButonlar(22, 15, mayinSayisi);
             }
-            else if (metroToggle3.CheckState == CheckState.Checked)
+            else if (toggleZor.CheckState == CheckState.Checked)
             {
                 mayinSayisi     = 55;
                 saniye          = 200;
@@ -96,11 +101,11 @@ namespace WindowsFormsApp
             this.MaximumSize = new Size(pnlGameMap.Width + 46,pnlGameMap.Height + 160);
             this.pnlConsole.Width = this.Width;
             
-            metroTile1.Width = pnlGameMap.Width;
+            titleBaslikAltCizgi.Width = pnlGameMap.Width;
             lblMayinSayisiBoard.Text    = mayinSayisi.ToString();
             tableLayoutPanel1.Visible   = true;
             takmaIsim = (txtBxTakmaIsim.Text == "" ) ? "-" : txtBxTakmaIsim.Text;
-            metroTile1.Top  = 130;
+            titleBaslikAltCizgi.Top  = 130;
             pnlGameMap.Top = 145;
             timer1.Start();
             pencereyiKonumlandir();
@@ -177,7 +182,7 @@ namespace WindowsFormsApp
             lblKalanSureBoard.Text = "0";
             MayinTarlasi                = null;
             tableLayoutPanel1.Visible   = false;
-            metroTile1.Top = 173;
+            titleBaslikAltCizgi.Top = 173;
             this.Refresh();
             pnlTakmaIsimBaslat.Visible  = true;
             flwPnlGameLvl.Visible       = true;
@@ -188,23 +193,23 @@ namespace WindowsFormsApp
         
         private void metroToggle1_Click(object sender, EventArgs e)
         {
-            metroToggle1.CheckState = CheckState.Checked;
-            metroToggle2.CheckState = CheckState.Unchecked;
-            metroToggle3.CheckState = CheckState.Unchecked;
+            toggleKolay.CheckState = CheckState.Checked;
+            toggleOrta.CheckState = CheckState.Unchecked;
+            toggleZor.CheckState = CheckState.Unchecked;
         }
 
         private void metroToggle2_Click(object sender, EventArgs e)
         {
-            metroToggle1.CheckState = CheckState.Unchecked;
-            metroToggle2.CheckState = CheckState.Checked;
-            metroToggle3.CheckState = CheckState.Unchecked;
+            toggleKolay.CheckState = CheckState.Unchecked;
+            toggleOrta.CheckState = CheckState.Checked;
+            toggleZor.CheckState = CheckState.Unchecked;
         }
 
         private void metroToggle3_Click(object sender, EventArgs e)
         {
-            metroToggle1.CheckState = CheckState.Unchecked;
-            metroToggle2.CheckState = CheckState.Unchecked;
-            metroToggle3.CheckState = CheckState.Checked;
+            toggleKolay.CheckState = CheckState.Unchecked;
+            toggleOrta.CheckState = CheckState.Unchecked;
+            toggleZor.CheckState = CheckState.Checked;
         }
         #endregion
 

@@ -63,9 +63,9 @@ namespace ModernMayinTarlasi.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
-        internal static System.Drawing.Bitmap consoleBackground {
+        internal static System.Drawing.Bitmap mine {
             get {
-                object obj = ResourceManager.GetObject("consoleBackground", resourceCulture);
+                object obj = ResourceManager.GetObject("mine", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,19 +73,9 @@ namespace ModernMayinTarlasi.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
-        internal static System.Drawing.Bitmap mineBomb {
+        internal static System.Drawing.Bitmap tedbir {
             get {
-                object obj = ResourceManager.GetObject("mineBomb", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
-        /// </summary>
-        internal static System.Drawing.Bitmap v_for_vendetta {
-            get {
-                object obj = ResourceManager.GetObject("v_for_vendetta", resourceCulture);
+                object obj = ResourceManager.GetObject("tedbir", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

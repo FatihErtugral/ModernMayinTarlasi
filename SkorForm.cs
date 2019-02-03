@@ -24,12 +24,20 @@ namespace WindowsFormsApp
         private void SkorForm_Load(object sender, EventArgs e)
         {
             ownerPointer = (AnaForm)this.Owner;
+            this.Style = ownerPointer.Style;
+            this.Theme = ownerPointer.Theme;
+            this.dataGridSkor.Style = this.Style;
+            this.dataGridSkor.Theme = this.Theme;
+             this.dataGridSkor.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+             //this.dataGridSkor.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            this.dataGridSkor.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
+            //this.dataGridSkor.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             if(File.Exists(Application.StartupPath + "\\Skor\\Skor.json"))
             {
                 var model = JsonConvert.DeserializeObject<SkorJSonModel>(
                 File.ReadAllText(Application.StartupPath + "\\Skor\\Skor.json"));
 
-                metroGrid1.DataSource = model.BillLists;
+                dataGridSkor.DataSource = model.BillLists;
                 //metroGrid1.Sort(metroGrid1.Columns[1], ListSortDirection.Descending);
              }
         }

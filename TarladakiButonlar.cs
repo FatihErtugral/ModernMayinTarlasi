@@ -21,18 +21,22 @@ namespace WindowsFormsApp
         private ushort mayinliButonSayisi;
 
 
-        // Game Button property
-        private Color mayinliButonRengi  = Color.FromArgb(42,    42,     42);
-        private Color bosAlanButonRengi  = Color.FromArgb(242,   235,    199); 
-        private Color numaraliButonRengi = Color.FromArgb(51,    55,     69);     
-        private Color butonNumaraRengi   = Color.FromArgb(246,   247,    146); 
-        private Color butonAnaRenk       = Color.FromArgb(211,   99,     128);
+        // Game Button Color property
+        private Color btnGameStep_BackColor     = Color.FromArgb(255, 255, 255);
+        private Color btnGameMine_BackColor     = Color.FromArgb(255, 255, 255);
+        private Color btnGameClean_BackColor    = Color.FromArgb(242, 242, 242); 
+        private Color btnGameClean_BorderColor  = Color.FromArgb(242, 242, 242); 
+        private Color btnGameNum_BackColor      = Color.FromArgb(89, 102, 120);     
+        private Color btnGameNum_ForeColor      = Color.FromArgb(255, 255, 255); 
+        private Color btnGameNum_BorderColor    = Color.FromArgb(89, 102, 120);
+        private Color btnGameDefault_BackColor  = Color.FromArgb(13, 13, 13);
+        private Color btnGameDefault_BorderColor = Color.FromArgb(255, 255, 255);
 
          
         private Size    _btnSize   = new Size(25, 25);
-        private Image   _mayinImg  = Resources.mineBomb;
-        private Image   _tedbirImg = Resources.v_for_vendetta;
-        private Font    _btnFont   = new Font("Let's go Digital", 12f);
+        private Image   _btnGameMineImg  = Resources.mine;
+        private Image   _btnGameStepImg = Resources.tedbir;
+        private Font    _btnFont = new Font("Segoe UI", 12f, FontStyle.Bold, GraphicsUnit.Pixel); //("Let's go Digital", 12f);
         private Point   _Point     = new Point(0, 0); 
         private Padding  _btnMargin  = new Padding(2);
         private Padding  _btnPadding = new Padding(0);
@@ -88,20 +92,19 @@ namespace WindowsFormsApp
 
         #region Konsol Metodları
 
-        
+       
         public void MayinlariKilitle()
         {
             foreach (var btn in butonListesi)
             {
                 if (btn.Value.Tag.ToString() == "9")
                 {
-                    btn.Value.BackgroundImage = _tedbirImg;
-                    //btn.Value.Enabled = false;
-                    //btn.Value.BackColor = mayinliButonRengi;
+                    btn.Value.BackgroundImage = _btnGameStepImg;
+                    btn.Value.BackColor = btnGameMine_BackColor;
                 }
             }
-           // kaybetme = true;
         }
+
         public void MayinlarinKilidiniKaldir()
         {
             foreach (var btn in butonListesi)
@@ -109,11 +112,9 @@ namespace WindowsFormsApp
                 if (btn.Value.Tag.ToString() == "9")
                 {
                     btn.Value.BackgroundImage = null;
-                    //btn.Value.Enabled = false;
-                    //btn.Value.BackColor = mayinliButonRengi;
+                    btn.Value.BackColor = btnGameDefault_BackColor;
                 }
             }
-           // kaybetme = true;
         }
         ///////////////////////////////////////////////////////////////////
         /// <summary>
@@ -143,7 +144,7 @@ namespace WindowsFormsApp
         private void CreateGameButton()
         {
             _btn   = new GameMineButton();
-
+            _btn.Font    = _btnFont;
             _btn.Size    = _btnSize;
             _btn.Margin  = _btnMargin;
             _btn.Padding = _btnPadding;
@@ -151,10 +152,9 @@ namespace WindowsFormsApp
             _btn.TabIndex   = 10;
             _btn.Enabled    = true;
             _btn.FlatStyle  = FlatStyle.Flat;
-            _btn.BackColor  = butonAnaRenk;//Color.OliveDrab;
-            
+            _btn.BackColor  = btnGameDefault_BackColor;
+            _btn.FlatAppearance.BorderColor = btnGameDefault_BorderColor;
             _btn.BackgroundImageLayout = ImageLayout.Stretch;
-            
         }
         ///////////////////////////////////////////////////////////////////
 
@@ -163,20 +163,20 @@ namespace WindowsFormsApp
         /// buton bilgileri işlenir ve ilgili kordinata panel içinde konumlandırılır.
         /// Prototype Tasarım Deseni kullanılarak, butonlar "new" ile değil "deep copy" yöntemiyle üretilir.
         /// </summary>
-        /// <param name="matrisHarita">MatrisField sınıfında oluşturulan diziyi alır</param>
-        /// <param name="kordinat_X">Dizinin x indisi arr[x,y]</param>
-        /// <param name="kordinat_Y">Dizinin y indisi arr[x,y]</param>
+        /// <param name="matrisMap">MatrisField sınıfında oluşturulan diziyi alır</param>
+        /// <param name="cord_X">Dizinin x indisi arr[x,y]</param>
+        /// <param name="cord_Y">Dizinin y indisi arr[x,y]</param>
         /// <param name="pnlPlatform">AnaForm'da oluşturulan panelin referansı</param>
         /// <returns>Dictonary listesine eklemek için Buton nesnesi geri döndürür</returns>
-        private GameMineButton DinamikButonOlustur(int[,] matrisHarita, int kordinat_X, int kordinat_Y, ref Panel pnlPlatform)
+        private GameMineButton DinamikButonOlustur(int[,] matrisMap, int cord_X, int cord_Y, ref Panel pnlPlatform)
         {
             GameMineButton btn = (GameMineButton)_btn.Clone();
 
-            btn.Tag = matrisHarita[kordinat_X, kordinat_Y];
-            btn.Name = $"{kordinat_X},{kordinat_Y}"; // Kordinatlar isimlerden yakalanıyor
+            btn.Tag = matrisMap[cord_X, cord_Y];
+            btn.Name = $"{cord_X},{cord_Y}"; // Kordinatlar isimlerden yakalanıyor
             
-            _Point.X = (kordinat_X * (btn.Height + 2));
-            _Point.Y = (kordinat_Y * (btn.Width + 2));
+            _Point.X = (cord_X * (btn.Height + 2));
+            _Point.Y = (cord_Y * (btn.Width + 2));
             btn.Location    = _Point;
 
             btn.Click      += btnClickHandler;
@@ -197,8 +197,14 @@ namespace WindowsFormsApp
             if (e.Button == MouseButtons.Right)
             {
                 if (btn.BackgroundImage == null)
-                        { btn.BackgroundImage = _tedbirImg; }
-                else    { btn.BackgroundImage = null; }
+                {
+                    btn.BackgroundImage = _btnGameStepImg;
+                    btn.BackColor = btnGameStep_BackColor;
+                }
+                else    {
+                    btn.BackgroundImage = null;
+                    btn.BackColor = btnGameDefault_BackColor;
+                }
             }
         }
         ///////////////////////////////////////////////////////////////////
@@ -208,22 +214,25 @@ namespace WindowsFormsApp
 
             GameMineButton btn = (GameMineButton)sender;
 
+            // Buton sağ tık ile kilitlendiyse sol tıklanamasın.
             if (btn.Enabled == false || btn.BackgroundImage != null)
                 return;
-
+            //Bombaya tıklanınca 
             if (btn.Tag.ToString() == "9")
             {
                 BtnMayinliHepsiniAc();
                 //MessageBox.Show("Oyunu kaybettin!");
                 return;
             }
+            // Boş butonları ve çevre rakamları açıyor
             else if (btn.Tag.ToString() == "0")
             {
                 btn.Enabled = false;
                 int[] cord = btn.Name.Split(',').Select(Int32.Parse).ToArray();
                 int cord1 = cord[0];
                 int cord2 = cord[1];
-                btn.BackColor = bosAlanButonRengi;
+                btn.FlatAppearance.BorderColor = btnGameClean_BorderColor;
+                btn.BackColor = btnGameClean_BackColor;
                 this.AcilmamisMayinsizButon--;
 
                 // Boşları aç
@@ -243,15 +252,16 @@ namespace WindowsFormsApp
                 BtnBosCevresindekiRakamlariAc(cord1, cord2 + 1);
                 return;
             }
+            // Numaralı butonları açıyor
             else if (btn.Tag.ToString() != "0" && btn.Tag.ToString() != "9")
             {
 
                 btn.Text    = btn.Tag.ToString();
                 btn.Enabled = false;
-                btn.BackColor = numaraliButonRengi;
-                btn.ForeColor = butonNumaraRengi;
-
-                //////////////////////////
+                btn.BackColor = btnGameNum_BackColor;
+                btn.ForeColor = btnGameNum_ForeColor;
+                btn.FlatAppearance.BorderColor = btnGameNum_BorderColor;
+                // Skor puanlama
                 skor += (int)btn.Tag + 2;
                 this.AcilmamisMayinsizButon--;
             }
@@ -278,6 +288,7 @@ namespace WindowsFormsApp
             if (kntrlBtn.Enabled == false)
                 return;
 
+            // Skor puanlama
             skor += 2;
             kntrlBtn.PerformClick();
             return;
@@ -291,26 +302,26 @@ namespace WindowsFormsApp
             {
                 if (btn.Value.Tag.ToString() == "9")
                 {
-                    btn.Value.BackgroundImage = _mayinImg;
                     btn.Value.Enabled = false;
-                    btn.Value.BackColor = mayinliButonRengi;
+                    btn.Value.BackgroundImage = _btnGameMineImg;
+                    btn.Value.BackColor = btnGameMine_BackColor;
                 }
             }
             kaybetme = true;
         }
         ///////////////////////////////////////////////////////////////////
 
-        private void BtnBosCevresindekiRakamlariAc(int kordinat_X, int kordinat_Y)
+        private void BtnBosCevresindekiRakamlariAc(int cord_X, int cord_Y)
         {
             GameMineButton kntrlBtn;
 
-            if (kordinat_X < 0 || kordinat_Y < 0)
+            if (cord_X < 0 || cord_Y < 0)
                 return;
-            if (kordinat_X >= yatayButonSayisi ||
-                kordinat_Y >= dikeyButonSayisi)
+            if (cord_X >= yatayButonSayisi ||
+                cord_Y >= dikeyButonSayisi)
                 return;
-            _Point.X = kordinat_X;
-            _Point.Y = kordinat_Y;
+            _Point.X = cord_X;
+            _Point.Y = cord_Y;
             butonListesi.TryGetValue(_Point, out kntrlBtn);
 
             if (kntrlBtn.Enabled == false)
@@ -324,11 +335,14 @@ namespace WindowsFormsApp
             {
                 kntrlBtn.BackgroundImage = null;
                 kntrlBtn.Text       = kntrlBtn.Tag.ToString();
-                kntrlBtn.BackColor  = numaraliButonRengi;
-                kntrlBtn.ForeColor  = butonNumaraRengi;
+                kntrlBtn.BackColor  = btnGameNum_BackColor;
+                kntrlBtn.ForeColor  = btnGameNum_ForeColor;
+                kntrlBtn.FlatAppearance.BorderColor = btnGameNum_BorderColor;
+
+
                 kntrlBtn.Enabled    = false;
 
-                ///////////
+                // Skor puanlama
                 skor += (int)kntrlBtn.Tag + 2;
                 this.AcilmamisMayinsizButon--;
             }
@@ -355,16 +369,26 @@ namespace WindowsFormsApp
             //mevcut property' lerden kopyalanmak istenen property ler belirtilir. Ancak bu örnekte hepsine gerek yoktur.
             //çünkü zaten oluşturuduğumuz copy sınıfının default değerleri içerisinde bulunduğumuz sınıf tarafından değiştirilmemektedir.
             //uygulama gereksinimine göre hepsi de kopyalanabilir.
-           
-            List<string> lst=new List<string>();
-            lst.Add("Font");                        lst.Add("FlatStyle");
-            lst.Add("Size");                        lst.Add("BackColor");
-            lst.Add("Margin");                      lst.Add("BackgroundImage");
-            lst.Add("Padding");                     lst.Add("Text");
-            lst.Add("TabStop");                     lst.Add("ForeColor");
-            lst.Add("TabIndex");                    lst.Add("Paint");
-            lst.Add("Enabled");                     lst.Add("Tag");
-            lst.Add("BackgroundImageLayout");
+
+            List<string> lst = new List<string>
+            {
+                "Font",
+                "FlatStyle",
+                "Size",
+                "BackColor",
+                "Margin",
+                "BackgroundImage",
+                "Padding",
+                "Text",
+                "TabStop",
+                "ForeColor",
+                "TabIndex",
+                "Paint",
+                "Enabled",
+                "Tag",
+                "BackgroundImageLayout",
+                "FlatAppearance.BorderColor"
+            };
 
             foreach (PropertyInfo pi in piList.Where(i=>lst.Contains(i.Name)))//içerisinde bulunduğumuz sınıfın propertyleri içerisinde dönülmeye başlanır.
             {
@@ -394,13 +418,16 @@ namespace WindowsFormsApp
                 // Calling the base class OnPaint
                 base.OnPaint(pe);
                 // Setup the Formatting for the text
-                StringFormat formatText = new StringFormat(StringFormatFlags.NoClip);
-                formatText.LineAlignment = StringAlignment.Center;
-                formatText.Alignment = StringAlignment.Center;
+                StringFormat formatText = new StringFormat(StringFormatFlags.NoClip)
+                {
+                    LineAlignment = StringAlignment.Center,
+                    Alignment = StringAlignment.Center,
+                    Trimming = StringTrimming.Character
+                };
                 // Drawing the button yoursel. The background is color
                 // pe.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(51,    55,     69)), pe.ClipRectangle);
                 // Draw the line around the button
-                // pe.Graphics.DrawRectangle(new Pen(Color.Black, 1), 0, 0, base.Width - 1, base.Height - 1);
+                // pe.Graphics.DrawRectangle(new Pen(base.FlatAppearance.BorderColor, 1), 0, 0, base.Width - 1, base.Height - 1);
                 // Draw the text in the button in color
                 pe.Graphics.DrawString(base.Text, base.Font, new SolidBrush(base.ForeColor),
                     new RectangleF(0F, 0F, base.Width, base.Height),  formatText);

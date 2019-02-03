@@ -137,9 +137,13 @@
     <Compile Include="TarladakiButonlar.cs" />
     <EmbeddedResource Include="AnaForm.resx">
       <DependentUpon>AnaForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AnaForm.tr-TR.resx">
+      <DependentUpon>AnaForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -176,12 +180,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\360fx360f.png" />
     <Content Include="land-mine_39055.ico" />
     <Content Include="MMT.gif" />
-    <None Include="Resources\consoleBackground.jpg" />
     <Content Include="M_Consol.gif" />
-    <Content Include="Resources\v-for-vendetta.png" />
+    <None Include="Resources\iconfinder_golf_103255.png" />
+    <None Include="Resources\iconfinder_minefield_103249.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">

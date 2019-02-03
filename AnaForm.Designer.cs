@@ -40,21 +40,21 @@
             this.lblMayinSayisiBoard = new System.Windows.Forms.Label();
             this.lblSkorBoard = new System.Windows.Forms.Label();
             this.lblTemizAlanBoard = new System.Windows.Forms.Label();
-            this.lblSkor = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.lblTemizAlan = new MetroFramework.Controls.MetroLabel();
+            this.lblMayinSayisi = new MetroFramework.Controls.MetroLabel();
             this.lblKalansure = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.metroTile1 = new MetroFramework.Controls.MetroTile();
-            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
+            this.lblSkor = new MetroFramework.Controls.MetroLabel();
+            this.titleBaslikAltCizgi = new MetroFramework.Controls.MetroTile();
+            this.lblTakmaIsım = new MetroFramework.Controls.MetroLabel();
             this.txtBxTakmaIsim = new MetroFramework.Controls.MetroTextBox();
             this.btnBaslat = new MetroFramework.Controls.MetroButton();
             this.flwPnlGameLvl = new System.Windows.Forms.FlowLayoutPanel();
-            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.metroToggle1 = new MetroFramework.Controls.MetroToggle();
-            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
-            this.metroToggle2 = new MetroFramework.Controls.MetroToggle();
-            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
-            this.metroToggle3 = new MetroFramework.Controls.MetroToggle();
+            this.lblKolay = new MetroFramework.Controls.MetroLabel();
+            this.toggleKolay = new MetroFramework.Controls.MetroToggle();
+            this.lblOrta = new MetroFramework.Controls.MetroLabel();
+            this.toggleOrta = new MetroFramework.Controls.MetroToggle();
+            this.lblZor = new MetroFramework.Controls.MetroLabel();
+            this.toggleZor = new MetroFramework.Controls.MetroToggle();
             this.pnlTakmaIsimBaslat = new System.Windows.Forms.Panel();
             this.pnlConsole = new System.Windows.Forms.Panel();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
@@ -127,10 +127,10 @@
             this.tableLayoutPanel1.Controls.Add(this.lblMayinSayisiBoard, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.lblSkorBoard, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.lblTemizAlanBoard, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.lblSkor, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.metroLabel1, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lblTemizAlan, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lblMayinSayisi, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.lblKalansure, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.metroLabel2, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lblSkor, 0, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(271, 71);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
@@ -200,67 +200,86 @@
             this.lblTemizAlanBoard.Text = "9999";
             this.lblTemizAlanBoard.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblSkor
+            // lblTemizAlan
             // 
-            this.lblSkor.AutoSize = true;
-            this.lblSkor.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblSkor.Location = new System.Drawing.Point(207, 0);
-            this.lblSkor.Name = "lblSkor";
-            this.lblSkor.Size = new System.Drawing.Size(75, 23);
-            this.lblSkor.TabIndex = 2;
-            this.lblSkor.Text = "Temiz Alan:";
+            this.lblTemizAlan.AutoSize = true;
+            this.lblTemizAlan.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblTemizAlan.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblTemizAlan.Location = new System.Drawing.Point(205, 0);
+            this.lblTemizAlan.Name = "lblTemizAlan";
+            this.lblTemizAlan.Size = new System.Drawing.Size(77, 23);
+            this.lblTemizAlan.Style = MetroFramework.MetroColorStyle.Lime;
+            this.lblTemizAlan.TabIndex = 2;
+            this.lblTemizAlan.Text = "Temiz Alan:";
+            this.lblTemizAlan.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.lblTemizAlan.UseCustomForeColor = true;
             // 
-            // metroLabel1
+            // lblMayinSayisi
             // 
-            this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.metroLabel1.Location = new System.Drawing.Point(200, 23);
-            this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(82, 24);
-            this.metroLabel1.TabIndex = 2;
-            this.metroLabel1.Text = "Mayın Sayısı:";
+            this.lblMayinSayisi.AutoSize = true;
+            this.lblMayinSayisi.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblMayinSayisi.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblMayinSayisi.Location = new System.Drawing.Point(195, 23);
+            this.lblMayinSayisi.Name = "lblMayinSayisi";
+            this.lblMayinSayisi.Size = new System.Drawing.Size(87, 24);
+            this.lblMayinSayisi.Style = MetroFramework.MetroColorStyle.Lime;
+            this.lblMayinSayisi.TabIndex = 2;
+            this.lblMayinSayisi.Text = "Mayın Sayısı:";
+            this.lblMayinSayisi.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.lblMayinSayisi.UseCustomForeColor = true;
             // 
             // lblKalansure
             // 
             this.lblKalansure.AutoSize = true;
             this.lblKalansure.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblKalansure.Location = new System.Drawing.Point(37, 0);
+            this.lblKalansure.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblKalansure.Location = new System.Drawing.Point(34, 0);
             this.lblKalansure.Name = "lblKalansure";
-            this.lblKalansure.Size = new System.Drawing.Size(73, 23);
+            this.lblKalansure.Size = new System.Drawing.Size(76, 23);
+            this.lblKalansure.Style = MetroFramework.MetroColorStyle.Lime;
             this.lblKalansure.TabIndex = 2;
             this.lblKalansure.Text = "Kalan Süre:";
+            this.lblKalansure.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.lblKalansure.UseCustomForeColor = true;
             // 
-            // metroLabel2
+            // lblSkor
             // 
-            this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.metroLabel2.Location = new System.Drawing.Point(71, 23);
-            this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(39, 24);
-            this.metroLabel2.TabIndex = 2;
-            this.metroLabel2.Text = "Skor:";
+            this.lblSkor.AutoSize = true;
+            this.lblSkor.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblSkor.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblSkor.Location = new System.Drawing.Point(71, 23);
+            this.lblSkor.Name = "lblSkor";
+            this.lblSkor.Size = new System.Drawing.Size(39, 24);
+            this.lblSkor.Style = MetroFramework.MetroColorStyle.Lime;
+            this.lblSkor.TabIndex = 2;
+            this.lblSkor.Text = "Skor:";
+            this.lblSkor.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.lblSkor.UseCustomForeColor = true;
             // 
-            // metroTile1
+            // titleBaslikAltCizgi
             // 
-            this.metroTile1.ActiveControl = null;
-            this.metroTile1.Location = new System.Drawing.Point(23, 173);
-            this.metroTile1.Margin = new System.Windows.Forms.Padding(0);
-            this.metroTile1.Name = "metroTile1";
-            this.metroTile1.Size = new System.Drawing.Size(594, 3);
-            this.metroTile1.Style = MetroFramework.MetroColorStyle.Lime;
-            this.metroTile1.TabIndex = 15;
-            this.metroTile1.Text = "metroTile1";
-            this.metroTile1.UseSelectable = true;
+            this.titleBaslikAltCizgi.ActiveControl = null;
+            this.titleBaslikAltCizgi.Location = new System.Drawing.Point(23, 173);
+            this.titleBaslikAltCizgi.Margin = new System.Windows.Forms.Padding(0);
+            this.titleBaslikAltCizgi.Name = "titleBaslikAltCizgi";
+            this.titleBaslikAltCizgi.Size = new System.Drawing.Size(594, 3);
+            this.titleBaslikAltCizgi.Style = MetroFramework.MetroColorStyle.Lime;
+            this.titleBaslikAltCizgi.TabIndex = 15;
+            this.titleBaslikAltCizgi.Text = "metroTile1";
+            this.titleBaslikAltCizgi.UseSelectable = true;
             // 
-            // metroLabel5
+            // lblTakmaIsım
             // 
-            this.metroLabel5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.metroLabel5.AutoSize = true;
-            this.metroLabel5.Location = new System.Drawing.Point(21, -1);
-            this.metroLabel5.Name = "metroLabel5";
-            this.metroLabel5.Size = new System.Drawing.Size(76, 19);
-            this.metroLabel5.TabIndex = 5;
-            this.metroLabel5.Text = "Takma isim:";
+            this.lblTakmaIsım.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblTakmaIsım.AutoSize = true;
+            this.lblTakmaIsım.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblTakmaIsım.Location = new System.Drawing.Point(21, -1);
+            this.lblTakmaIsım.Name = "lblTakmaIsım";
+            this.lblTakmaIsım.Size = new System.Drawing.Size(76, 19);
+            this.lblTakmaIsım.Style = MetroFramework.MetroColorStyle.Lime;
+            this.lblTakmaIsım.TabIndex = 5;
+            this.lblTakmaIsım.Text = "Takma isim:";
+            this.lblTakmaIsım.Theme = MetroFramework.MetroThemeStyle.Light;
             // 
             // txtBxTakmaIsim
             // 
@@ -317,101 +336,113 @@
             // 
             // flwPnlGameLvl
             // 
-            this.flwPnlGameLvl.Controls.Add(this.metroLabel3);
-            this.flwPnlGameLvl.Controls.Add(this.metroToggle1);
-            this.flwPnlGameLvl.Controls.Add(this.metroLabel4);
-            this.flwPnlGameLvl.Controls.Add(this.metroToggle2);
-            this.flwPnlGameLvl.Controls.Add(this.metroLabel6);
-            this.flwPnlGameLvl.Controls.Add(this.metroToggle3);
+            this.flwPnlGameLvl.Controls.Add(this.lblKolay);
+            this.flwPnlGameLvl.Controls.Add(this.toggleKolay);
+            this.flwPnlGameLvl.Controls.Add(this.lblOrta);
+            this.flwPnlGameLvl.Controls.Add(this.toggleOrta);
+            this.flwPnlGameLvl.Controls.Add(this.lblZor);
+            this.flwPnlGameLvl.Controls.Add(this.toggleZor);
             this.flwPnlGameLvl.Location = new System.Drawing.Point(471, 84);
             this.flwPnlGameLvl.Name = "flwPnlGameLvl";
             this.flwPnlGameLvl.Size = new System.Drawing.Size(119, 68);
             this.flwPnlGameLvl.TabIndex = 22;
             // 
-            // metroLabel3
+            // lblKolay
             // 
-            this.metroLabel3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.metroLabel3.Location = new System.Drawing.Point(3, 2);
-            this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(45, 19);
-            this.metroLabel3.TabIndex = 5;
-            this.metroLabel3.Text = "Kolay:";
+            this.lblKolay.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblKolay.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblKolay.Location = new System.Drawing.Point(3, 2);
+            this.lblKolay.Name = "lblKolay";
+            this.lblKolay.Size = new System.Drawing.Size(45, 19);
+            this.lblKolay.Style = MetroFramework.MetroColorStyle.Lime;
+            this.lblKolay.TabIndex = 5;
+            this.lblKolay.Text = "Kolay:";
+            this.lblKolay.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.lblKolay.UseCustomForeColor = true;
             // 
-            // metroToggle1
+            // toggleKolay
             // 
-            this.metroToggle1.AutoSize = true;
-            this.metroToggle1.Checked = true;
-            this.metroToggle1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.metroToggle1.DisplayFocus = true;
-            this.metroToggle1.DisplayStatus = false;
-            this.metroToggle1.Location = new System.Drawing.Point(54, 3);
-            this.metroToggle1.Name = "metroToggle1";
-            this.metroToggle1.Size = new System.Drawing.Size(50, 17);
-            this.metroToggle1.Style = MetroFramework.MetroColorStyle.Lime;
-            this.metroToggle1.TabIndex = 1;
-            this.metroToggle1.TabStop = false;
-            this.metroToggle1.Text = "On";
-            this.metroToggle1.Theme = this.Theme;
-            this.metroToggle1.UseCustomBackColor = true;
-            this.metroToggle1.UseCustomForeColor = true;
-            this.metroToggle1.UseSelectable = true;
-            this.metroToggle1.UseStyleColors = true;
-            this.metroToggle1.Click += new System.EventHandler(this.metroToggle1_Click);
+            this.toggleKolay.AutoSize = true;
+            this.toggleKolay.Checked = true;
+            this.toggleKolay.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.toggleKolay.DisplayFocus = true;
+            this.toggleKolay.DisplayStatus = false;
+            this.toggleKolay.Location = new System.Drawing.Point(54, 3);
+            this.toggleKolay.Name = "toggleKolay";
+            this.toggleKolay.Size = new System.Drawing.Size(50, 17);
+            this.toggleKolay.Style = MetroFramework.MetroColorStyle.Lime;
+            this.toggleKolay.TabIndex = 1;
+            this.toggleKolay.TabStop = false;
+            this.toggleKolay.Text = "On";
+            this.toggleKolay.Theme = this.Theme;
+            this.toggleKolay.UseCustomBackColor = true;
+            this.toggleKolay.UseCustomForeColor = true;
+            this.toggleKolay.UseSelectable = true;
+            this.toggleKolay.UseStyleColors = true;
+            this.toggleKolay.Click += new System.EventHandler(this.metroToggle1_Click);
             // 
-            // metroLabel4
+            // lblOrta
             // 
-            this.metroLabel4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.metroLabel4.Location = new System.Drawing.Point(3, 25);
-            this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(45, 19);
-            this.metroLabel4.TabIndex = 5;
-            this.metroLabel4.Text = "Orta:";
+            this.lblOrta.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblOrta.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblOrta.Location = new System.Drawing.Point(3, 25);
+            this.lblOrta.Name = "lblOrta";
+            this.lblOrta.Size = new System.Drawing.Size(45, 19);
+            this.lblOrta.Style = MetroFramework.MetroColorStyle.Lime;
+            this.lblOrta.TabIndex = 5;
+            this.lblOrta.Text = "Orta:";
+            this.lblOrta.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.lblOrta.UseCustomForeColor = true;
             // 
-            // metroToggle2
+            // toggleOrta
             // 
-            this.metroToggle2.AutoSize = true;
-            this.metroToggle2.DisplayFocus = true;
-            this.metroToggle2.DisplayStatus = false;
-            this.metroToggle2.Location = new System.Drawing.Point(54, 26);
-            this.metroToggle2.Name = "metroToggle2";
-            this.metroToggle2.Size = new System.Drawing.Size(50, 17);
-            this.metroToggle2.Style = MetroFramework.MetroColorStyle.Lime;
-            this.metroToggle2.TabIndex = 1;
-            this.metroToggle2.TabStop = false;
-            this.metroToggle2.Text = "Off";
-            this.metroToggle2.UseSelectable = true;
-            this.metroToggle2.Click += new System.EventHandler(this.metroToggle2_Click);
+            this.toggleOrta.AutoSize = true;
+            this.toggleOrta.DisplayFocus = true;
+            this.toggleOrta.DisplayStatus = false;
+            this.toggleOrta.Location = new System.Drawing.Point(54, 26);
+            this.toggleOrta.Name = "toggleOrta";
+            this.toggleOrta.Size = new System.Drawing.Size(50, 17);
+            this.toggleOrta.Style = MetroFramework.MetroColorStyle.Lime;
+            this.toggleOrta.TabIndex = 1;
+            this.toggleOrta.TabStop = false;
+            this.toggleOrta.Text = "Off";
+            this.toggleOrta.UseSelectable = true;
+            this.toggleOrta.Click += new System.EventHandler(this.metroToggle2_Click);
             // 
-            // metroLabel6
+            // lblZor
             // 
-            this.metroLabel6.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.metroLabel6.Location = new System.Drawing.Point(3, 48);
-            this.metroLabel6.Name = "metroLabel6";
-            this.metroLabel6.Size = new System.Drawing.Size(45, 19);
-            this.metroLabel6.TabIndex = 5;
-            this.metroLabel6.Text = "Zor:";
+            this.lblZor.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblZor.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblZor.Location = new System.Drawing.Point(3, 48);
+            this.lblZor.Name = "lblZor";
+            this.lblZor.Size = new System.Drawing.Size(45, 19);
+            this.lblZor.Style = MetroFramework.MetroColorStyle.Lime;
+            this.lblZor.TabIndex = 5;
+            this.lblZor.Text = "Zor:";
+            this.lblZor.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.lblZor.UseCustomForeColor = true;
             // 
-            // metroToggle3
+            // toggleZor
             // 
-            this.metroToggle3.AutoSize = true;
-            this.metroToggle3.DisplayFocus = true;
-            this.metroToggle3.DisplayStatus = false;
-            this.flwPnlGameLvl.SetFlowBreak(this.metroToggle3, true);
-            this.metroToggle3.Location = new System.Drawing.Point(54, 49);
-            this.metroToggle3.Name = "metroToggle3";
-            this.metroToggle3.Size = new System.Drawing.Size(50, 17);
-            this.metroToggle3.Style = MetroFramework.MetroColorStyle.Lime;
-            this.metroToggle3.TabIndex = 1;
-            this.metroToggle3.TabStop = false;
-            this.metroToggle3.Text = "Off";
-            this.metroToggle3.UseSelectable = true;
-            this.metroToggle3.Click += new System.EventHandler(this.metroToggle3_Click);
+            this.toggleZor.AutoSize = true;
+            this.toggleZor.DisplayFocus = true;
+            this.toggleZor.DisplayStatus = false;
+            this.flwPnlGameLvl.SetFlowBreak(this.toggleZor, true);
+            this.toggleZor.Location = new System.Drawing.Point(54, 49);
+            this.toggleZor.Name = "toggleZor";
+            this.toggleZor.Size = new System.Drawing.Size(50, 17);
+            this.toggleZor.Style = MetroFramework.MetroColorStyle.Lime;
+            this.toggleZor.TabIndex = 1;
+            this.toggleZor.TabStop = false;
+            this.toggleZor.Text = "Off";
+            this.toggleZor.UseSelectable = true;
+            this.toggleZor.Click += new System.EventHandler(this.metroToggle3_Click);
             // 
             // pnlTakmaIsimBaslat
             // 
             this.pnlTakmaIsimBaslat.Controls.Add(this.btnBaslat);
             this.pnlTakmaIsimBaslat.Controls.Add(this.txtBxTakmaIsim);
-            this.pnlTakmaIsimBaslat.Controls.Add(this.metroLabel5);
+            this.pnlTakmaIsimBaslat.Controls.Add(this.lblTakmaIsım);
             this.pnlTakmaIsimBaslat.Location = new System.Drawing.Point(212, 71);
             this.pnlTakmaIsimBaslat.Name = "pnlTakmaIsimBaslat";
             this.pnlTakmaIsimBaslat.Size = new System.Drawing.Size(216, 99);
@@ -491,9 +522,9 @@
             this.Controls.Add(this.pnlTakmaIsimBaslat);
             this.Controls.Add(this.flwPnlGameLvl);
             this.Controls.Add(this.btnMenu);
-            this.Controls.Add(this.tableLayoutPanel1);
-            this.Controls.Add(this.metroTile1);
+            this.Controls.Add(this.titleBaslikAltCizgi);
             this.Controls.Add(this.pnlGameMap);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(640, 196);
@@ -528,24 +559,24 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label lblSkorBoard;
         private MetroFramework.Controls.MetroLabel lblKalansure;
-        private MetroFramework.Controls.MetroLabel lblSkor;
+        private MetroFramework.Controls.MetroLabel lblTemizAlan;
         private System.Windows.Forms.Label lblKalanSureBoard;
         private System.Windows.Forms.Label lblMayinSayisiBoard;
-        private MetroFramework.Controls.MetroLabel metroLabel1;
+        private MetroFramework.Controls.MetroLabel lblMayinSayisi;
         private System.Windows.Forms.Label lblTemizAlanBoard;
-        private MetroFramework.Controls.MetroLabel metroLabel2;
-        private MetroFramework.Controls.MetroTile metroTile1;
-        private MetroFramework.Controls.MetroLabel metroLabel5;
+        private MetroFramework.Controls.MetroLabel lblSkor;
+        private MetroFramework.Controls.MetroTile titleBaslikAltCizgi;
+        private MetroFramework.Controls.MetroLabel lblTakmaIsım;
         private MetroFramework.Controls.MetroTextBox txtBxTakmaIsim;
         private MetroFramework.Controls.MetroButton btnBaslat;
         private System.Windows.Forms.FlowLayoutPanel flwPnlGameLvl;
-        private MetroFramework.Controls.MetroLabel metroLabel3;
-        private MetroFramework.Controls.MetroToggle metroToggle1;
+        private MetroFramework.Controls.MetroLabel lblKolay;
+        private MetroFramework.Controls.MetroToggle toggleKolay;
         private System.Windows.Forms.Panel pnlTakmaIsimBaslat;
-        private MetroFramework.Controls.MetroLabel metroLabel4;
-        private MetroFramework.Controls.MetroToggle metroToggle2;
-        private MetroFramework.Controls.MetroLabel metroLabel6;
-        private MetroFramework.Controls.MetroToggle metroToggle3;
+        private MetroFramework.Controls.MetroLabel lblOrta;
+        private MetroFramework.Controls.MetroToggle toggleOrta;
+        private MetroFramework.Controls.MetroLabel lblZor;
+        private MetroFramework.Controls.MetroToggle toggleZor;
         private System.Windows.Forms.ToolStripMenuItem skorTablosuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hakkındaToolStripMenuItem;
         private System.Windows.Forms.Panel pnlConsole;
