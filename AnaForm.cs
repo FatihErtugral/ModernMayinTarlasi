@@ -22,11 +22,14 @@ namespace WindowsFormsApp
         public AnaForm()
         {
             InitializeComponent();
+
             //Konum
             pencereyiKonumlandir();
+
             //Skor
             SkorTablosu = new SkorJsonDosyaCikisi();
             this.ActiveControl = txtBxTakmaIsim;
+
             //Konsol
             btnCnslOpen = new Button();
             consolePanel = new SlidingPanel(ref pnlConsole,ref btnCnslOpen, -400,0);
@@ -56,11 +59,10 @@ namespace WindowsFormsApp
 
         private void btnBaslat_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            pnlGameMap.Hide();
+            pnlTakmaIsimBaslat.Visible = flwPnlGameLvl.Visible = false;
            
-            panel1.Visible = flowLayoutPanel2.Visible = false;
             #region Oyun zorluk derecesi
-
            
             if (metroToggle1.CheckState == CheckState.Checked)
             {
@@ -84,32 +86,28 @@ namespace WindowsFormsApp
             #endregion
 
             #region Boyutlandırma - Panel gizleyip açma - Pencere konumlandırma
-
             
-            metroTile1.Top  = 130;
-            metroPanel1.Top = 145;
-
             //Butonları oluşturucu fonksiyon
-            MayinTarlasi.MatristekiVeriyiButonlaraCevirListeYap(ref metroPanel1);
+            MayinTarlasi.MatristekiVeriyiButonlaraCevirListeYap(ref pnlGameMap);
 
-            this.Width      = metroPanel1.Width + 46;
-            this.Height     = metroPanel1.Height + 160;
-            this.MinimumSize = new Size(metroPanel1.Width + 46,metroPanel1.Height + 160);
-            this.MaximumSize = new Size(metroPanel1.Width + 46,metroPanel1.Height + 160);
+            this.Width      = pnlGameMap.Width + 46;
+            this.Height     = pnlGameMap.Height + 160;
+            this.MinimumSize = new Size(pnlGameMap.Width + 46,pnlGameMap.Height + 160);
+            this.MaximumSize = new Size(pnlGameMap.Width + 46,pnlGameMap.Height + 160);
             this.pnlConsole.Width = this.Width;
             
-            metroTile1.Width = metroPanel1.Width;
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
+            metroTile1.Width = pnlGameMap.Width;
             lblMayinSayisiBoard.Text    = mayinSayisi.ToString();
             tableLayoutPanel1.Visible   = true;
-            metroTile1.Visible          = true;
             takmaIsim = (txtBxTakmaIsim.Text == "" ) ? "-" : txtBxTakmaIsim.Text;
+            metroTile1.Top  = 130;
+            pnlGameMap.Top = 145;
             timer1.Start();
-
             pencereyiKonumlandir();
+            Refresh();
+            pnlGameMap.Show();
+         
             #endregion
-            this.Show();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -120,6 +118,7 @@ namespace WindowsFormsApp
                 SkorTablosu.Ekle(takmaIsim, MayinTarlasi.skor);
                 timer1.Stop();
                 SkorGoster();
+                pencereyiBaslangicAyarlarinaCek();    
                 return;
             }
 
@@ -133,6 +132,7 @@ namespace WindowsFormsApp
                 lblSkorBoard.Text = (MayinTarlasi.skor + (saniye *2)).ToString();
                 timer1.Stop();
                 SkorGoster();
+                pencereyiBaslangicAyarlarinaCek();
                 return;
             }
             if (MayinTarlasi.kaybetme) // Game over
@@ -140,6 +140,7 @@ namespace WindowsFormsApp
                 SkorTablosu.Ekle(takmaIsim, MayinTarlasi.skor);
                 timer1.Stop();
                 SkorGoster();
+                pencereyiBaslangicAyarlarinaCek();
                 return;
             }
         }
@@ -154,7 +155,6 @@ namespace WindowsFormsApp
                 Style = Style
             };
             skrfrm.ShowDialog();
-            pencereyiBaslangicAyarlarinaCek();
         }
 
         private void pencereyiKonumlandir()
@@ -166,18 +166,21 @@ namespace WindowsFormsApp
         private void pencereyiBaslangicAyarlarinaCek()
         {
             timer1.Stop();
-            this.Hide();
-            metroPanel1.Controls.Clear();
+            pnlGameMap.Hide();
+            pnlGameMap.Controls.Clear();
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            txtBxTakmaIsim.Focus();
+
             lblSkorBoard.Text      = "0";
             lblTemizAlanBoard.Text = "0";
             lblKalanSureBoard.Text = "0";
             MayinTarlasi                = null;
             tableLayoutPanel1.Visible   = false;
-            panel1.Visible              = true;
-            flowLayoutPanel2.Visible    = true;
-            txtBxTakmaIsim.Focus();
             metroTile1.Top = 173;
-            this.Show();
+            this.Refresh();
+            pnlTakmaIsimBaslat.Visible  = true;
+            flwPnlGameLvl.Visible       = true;
         }
 
         #region kolay-orta-zor buton seçme senkronizasyon

@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.Menu = new MetroFramework.Controls.MetroContextMenu(this.components);
             this.yeniOyunToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.skorTablosuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,29 +44,27 @@
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.lblKalansure = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.btnMenu = new MetroFramework.Controls.MetroButton();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.metroTile1 = new MetroFramework.Controls.MetroTile();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.txtBxTakmaIsim = new MetroFramework.Controls.MetroTextBox();
             this.btnBaslat = new MetroFramework.Controls.MetroButton();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flwPnlGameLvl = new System.Windows.Forms.FlowLayoutPanel();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.metroToggle1 = new MetroFramework.Controls.MetroToggle();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.metroToggle2 = new MetroFramework.Controls.MetroToggle();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.metroToggle3 = new MetroFramework.Controls.MetroToggle();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.metroTile2 = new MetroFramework.Controls.MetroTile();
+            this.pnlTakmaIsimBaslat = new System.Windows.Forms.Panel();
             this.pnlConsole = new System.Windows.Forms.Panel();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.consoleTxtBx = new System.Windows.Forms.TextBox();
+            this.pnlGameMap = new System.Windows.Forms.Panel();
+            this.btnMenu = new MetroFramework.Controls.MetroButton();
             this.Menu.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.flwPnlGameLvl.SuspendLayout();
+            this.pnlTakmaIsimBaslat.SuspendLayout();
             this.pnlConsole.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,20 +72,6 @@
             // 
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // metroPanel1
-            // 
-            this.metroPanel1.HorizontalScrollbarBarColor = true;
-            this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel1.HorizontalScrollbarSize = 10;
-            this.metroPanel1.Location = new System.Drawing.Point(23, 187);
-            this.metroPanel1.Margin = new System.Windows.Forms.Padding(0);
-            this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(102, 66);
-            this.metroPanel1.TabIndex = 9;
-            this.metroPanel1.VerticalScrollbarBarColor = true;
-            this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel1.VerticalScrollbarSize = 10;
             // 
             // Menu
             // 
@@ -148,7 +131,7 @@
             this.tableLayoutPanel1.Controls.Add(this.metroLabel1, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.lblKalansure, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.metroLabel2, 0, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(135, 3);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(271, 71);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -257,39 +240,13 @@
             this.metroLabel2.TabIndex = 2;
             this.metroLabel2.Text = "Skor:";
             // 
-            // btnMenu
-            // 
-            this.btnMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnMenu.Location = new System.Drawing.Point(3, 3);
-            this.btnMenu.Name = "btnMenu";
-            this.btnMenu.Size = new System.Drawing.Size(75, 17);
-            this.btnMenu.TabIndex = 1;
-            this.btnMenu.TabStop = false;
-            this.btnMenu.Text = "Menu";
-            this.btnMenu.UseSelectable = true;
-            this.btnMenu.Click += new System.EventHandler(this.btnMenu_Click);
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 132F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65.1715F));
-            this.tableLayoutPanel2.Controls.Add(this.btnMenu, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel1, 1, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(23, 69);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 24.75961F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(484, 67);
-            this.tableLayoutPanel2.TabIndex = 14;
-            // 
             // metroTile1
             // 
             this.metroTile1.ActiveControl = null;
             this.metroTile1.Location = new System.Drawing.Point(23, 173);
             this.metroTile1.Margin = new System.Windows.Forms.Padding(0);
             this.metroTile1.Name = "metroTile1";
-            this.metroTile1.Size = new System.Drawing.Size(484, 3);
+            this.metroTile1.Size = new System.Drawing.Size(594, 3);
             this.metroTile1.Style = MetroFramework.MetroColorStyle.Lime;
             this.metroTile1.TabIndex = 15;
             this.metroTile1.Text = "metroTile1";
@@ -299,7 +256,7 @@
             // 
             this.metroLabel5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.metroLabel5.AutoSize = true;
-            this.metroLabel5.Location = new System.Drawing.Point(21, 0);
+            this.metroLabel5.Location = new System.Drawing.Point(21, -1);
             this.metroLabel5.Name = "metroLabel5";
             this.metroLabel5.Size = new System.Drawing.Size(76, 19);
             this.metroLabel5.TabIndex = 5;
@@ -328,7 +285,7 @@
             this.txtBxTakmaIsim.CustomButton.Visible = false;
             this.txtBxTakmaIsim.IconRight = true;
             this.txtBxTakmaIsim.Lines = new string[0];
-            this.txtBxTakmaIsim.Location = new System.Drawing.Point(21, 22);
+            this.txtBxTakmaIsim.Location = new System.Drawing.Point(21, 21);
             this.txtBxTakmaIsim.MaxLength = 35;
             this.txtBxTakmaIsim.Name = "txtBxTakmaIsim";
             this.txtBxTakmaIsim.PasswordChar = '\0';
@@ -350,7 +307,7 @@
             // btnBaslat
             // 
             this.btnBaslat.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnBaslat.Location = new System.Drawing.Point(21, 54);
+            this.btnBaslat.Location = new System.Drawing.Point(21, 53);
             this.btnBaslat.Name = "btnBaslat";
             this.btnBaslat.Size = new System.Drawing.Size(175, 28);
             this.btnBaslat.TabIndex = 1;
@@ -358,18 +315,18 @@
             this.btnBaslat.UseSelectable = true;
             this.btnBaslat.Click += new System.EventHandler(this.btnBaslat_Click);
             // 
-            // flowLayoutPanel2
+            // flwPnlGameLvl
             // 
-            this.flowLayoutPanel2.Controls.Add(this.metroLabel3);
-            this.flowLayoutPanel2.Controls.Add(this.metroToggle1);
-            this.flowLayoutPanel2.Controls.Add(this.metroLabel4);
-            this.flowLayoutPanel2.Controls.Add(this.metroToggle2);
-            this.flowLayoutPanel2.Controls.Add(this.metroLabel6);
-            this.flowLayoutPanel2.Controls.Add(this.metroToggle3);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(388, 86);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(119, 68);
-            this.flowLayoutPanel2.TabIndex = 22;
+            this.flwPnlGameLvl.Controls.Add(this.metroLabel3);
+            this.flwPnlGameLvl.Controls.Add(this.metroToggle1);
+            this.flwPnlGameLvl.Controls.Add(this.metroLabel4);
+            this.flwPnlGameLvl.Controls.Add(this.metroToggle2);
+            this.flwPnlGameLvl.Controls.Add(this.metroLabel6);
+            this.flwPnlGameLvl.Controls.Add(this.metroToggle3);
+            this.flwPnlGameLvl.Location = new System.Drawing.Point(471, 84);
+            this.flwPnlGameLvl.Name = "flwPnlGameLvl";
+            this.flwPnlGameLvl.Size = new System.Drawing.Size(119, 68);
+            this.flwPnlGameLvl.TabIndex = 22;
             // 
             // metroLabel3
             // 
@@ -439,7 +396,7 @@
             this.metroToggle3.AutoSize = true;
             this.metroToggle3.DisplayFocus = true;
             this.metroToggle3.DisplayStatus = false;
-            this.flowLayoutPanel2.SetFlowBreak(this.metroToggle3, true);
+            this.flwPnlGameLvl.SetFlowBreak(this.metroToggle3, true);
             this.metroToggle3.Location = new System.Drawing.Point(54, 49);
             this.metroToggle3.Name = "metroToggle3";
             this.metroToggle3.Size = new System.Drawing.Size(50, 17);
@@ -450,28 +407,15 @@
             this.metroToggle3.UseSelectable = true;
             this.metroToggle3.Click += new System.EventHandler(this.metroToggle3_Click);
             // 
-            // panel1
+            // pnlTakmaIsimBaslat
             // 
-            this.panel1.Controls.Add(this.btnBaslat);
-            this.panel1.Controls.Add(this.txtBxTakmaIsim);
-            this.panel1.Controls.Add(this.metroLabel5);
-            this.panel1.Location = new System.Drawing.Point(157, 70);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(216, 100);
-            this.panel1.TabIndex = 23;
-            // 
-            // metroTile2
-            // 
-            this.metroTile2.ActiveControl = null;
-            this.metroTile2.Location = new System.Drawing.Point(23, 131);
-            this.metroTile2.Margin = new System.Windows.Forms.Padding(0);
-            this.metroTile2.Name = "metroTile2";
-            this.metroTile2.Size = new System.Drawing.Size(484, 3);
-            this.metroTile2.Style = MetroFramework.MetroColorStyle.Lime;
-            this.metroTile2.TabIndex = 24;
-            this.metroTile2.Text = "metroTile2";
-            this.metroTile2.UseSelectable = true;
-            this.metroTile2.Visible = false;
+            this.pnlTakmaIsimBaslat.Controls.Add(this.btnBaslat);
+            this.pnlTakmaIsimBaslat.Controls.Add(this.txtBxTakmaIsim);
+            this.pnlTakmaIsimBaslat.Controls.Add(this.metroLabel5);
+            this.pnlTakmaIsimBaslat.Location = new System.Drawing.Point(212, 71);
+            this.pnlTakmaIsimBaslat.Name = "pnlTakmaIsimBaslat";
+            this.pnlTakmaIsimBaslat.Size = new System.Drawing.Size(216, 99);
+            this.pnlTakmaIsimBaslat.TabIndex = 23;
             // 
             // pnlConsole
             // 
@@ -517,22 +461,42 @@
             this.consoleTxtBx.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ConsoleTextBox_KeyDown);
             this.consoleTxtBx.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.consoleTxtBx_KeyPress);
             // 
+            // pnlGameMap
+            // 
+            this.pnlGameMap.Location = new System.Drawing.Point(23, 187);
+            this.pnlGameMap.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlGameMap.Name = "pnlGameMap";
+            this.pnlGameMap.Size = new System.Drawing.Size(102, 66);
+            this.pnlGameMap.TabIndex = 9;
+            // 
+            // btnMenu
+            // 
+            this.btnMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnMenu.Location = new System.Drawing.Point(23, 71);
+            this.btnMenu.Name = "btnMenu";
+            this.btnMenu.Size = new System.Drawing.Size(75, 17);
+            this.btnMenu.TabIndex = 1;
+            this.btnMenu.TabStop = false;
+            this.btnMenu.Text = "Menu";
+            this.btnMenu.UseSelectable = true;
+            this.btnMenu.Click += new System.EventHandler(this.btnMenu_Click);
+            // 
             // AnaForm
             // 
             this.AccessibleName = "fatihertugral89@gmail.com";
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(530, 196);
+            this.ClientSize = new System.Drawing.Size(640, 196);
             this.Controls.Add(this.pnlConsole);
-            this.Controls.Add(this.flowLayoutPanel2);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.metroTile2);
+            this.Controls.Add(this.pnlTakmaIsimBaslat);
+            this.Controls.Add(this.flwPnlGameLvl);
+            this.Controls.Add(this.btnMenu);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.metroTile1);
-            this.Controls.Add(this.metroPanel1);
-            this.Controls.Add(this.tableLayoutPanel2);
+            this.Controls.Add(this.pnlGameMap);
             this.KeyPreview = true;
             this.MaximizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(530, 196);
+            this.MinimumSize = new System.Drawing.Size(640, 196);
             this.Name = "AnaForm";
             this.Resizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
@@ -545,11 +509,10 @@
             this.Menu.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.flowLayoutPanel2.ResumeLayout(false);
-            this.flowLayoutPanel2.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.flwPnlGameLvl.ResumeLayout(false);
+            this.flwPnlGameLvl.PerformLayout();
+            this.pnlTakmaIsimBaslat.ResumeLayout(false);
+            this.pnlTakmaIsimBaslat.PerformLayout();
             this.pnlConsole.ResumeLayout(false);
             this.pnlConsole.PerformLayout();
             this.ResumeLayout(false);
@@ -558,7 +521,7 @@
 
         #endregion
         private System.Windows.Forms.Timer timer1;
-        private MetroFramework.Controls.MetroPanel metroPanel1;
+        private System.Windows.Forms.Panel pnlGameMap;
         private new MetroFramework.Controls.MetroContextMenu Menu;
         private System.Windows.Forms.ToolStripMenuItem yeniOyunToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem çıkışToolStripMenuItem;
@@ -567,8 +530,6 @@
         private MetroFramework.Controls.MetroLabel lblKalansure;
         private MetroFramework.Controls.MetroLabel lblSkor;
         private System.Windows.Forms.Label lblKalanSureBoard;
-        private MetroFramework.Controls.MetroButton btnMenu;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label lblMayinSayisiBoard;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private System.Windows.Forms.Label lblTemizAlanBoard;
@@ -577,20 +538,20 @@
         private MetroFramework.Controls.MetroLabel metroLabel5;
         private MetroFramework.Controls.MetroTextBox txtBxTakmaIsim;
         private MetroFramework.Controls.MetroButton btnBaslat;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.FlowLayoutPanel flwPnlGameLvl;
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroToggle metroToggle1;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlTakmaIsimBaslat;
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroToggle metroToggle2;
         private MetroFramework.Controls.MetroLabel metroLabel6;
         private MetroFramework.Controls.MetroToggle metroToggle3;
-        private MetroFramework.Controls.MetroTile metroTile2;
         private System.Windows.Forms.ToolStripMenuItem skorTablosuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hakkındaToolStripMenuItem;
         private System.Windows.Forms.Panel pnlConsole;
         private System.Windows.Forms.TextBox consoleTxtBx;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private MetroFramework.Controls.MetroButton btnMenu;
     }
 }
 

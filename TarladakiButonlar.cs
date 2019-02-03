@@ -65,7 +65,7 @@ namespace WindowsFormsApp
         ///////////////////////////////////////////////////////////////////
 
         //
-        public void MatristekiVeriyiButonlaraCevirListeYap(ref MetroPanel pnlPlatform)
+        public void MatristekiVeriyiButonlaraCevirListeYap(ref Panel pnlPlatform)
         {
             kaybetme     = false;
             _matrisDizi   = new MatrisField2D(this.yatayButonSayisi, this.dikeyButonSayisi, this.mayinliButonSayisi);
@@ -168,7 +168,7 @@ namespace WindowsFormsApp
         /// <param name="kordinat_Y">Dizinin y indisi arr[x,y]</param>
         /// <param name="pnlPlatform">AnaForm'da oluşturulan panelin referansı</param>
         /// <returns>Dictonary listesine eklemek için Buton nesnesi geri döndürür</returns>
-        private GameMineButton DinamikButonOlustur(int[,] matrisHarita, int kordinat_X, int kordinat_Y, ref MetroPanel pnlPlatform)
+        private GameMineButton DinamikButonOlustur(int[,] matrisHarita, int kordinat_X, int kordinat_Y, ref Panel pnlPlatform)
         {
             GameMineButton btn = (GameMineButton)_btn.Clone();
 
@@ -232,12 +232,15 @@ namespace WindowsFormsApp
                 BtnBosDegerAc(cord1, cord2 + 1);
                 BtnBosDegerAc(cord1, cord2 - 1);
                 // Boşların çevresindeki rakamları aç
+                BtnBosCevresindekiRakamlariAc(cord1 + 1, cord2 + 1);
+                BtnBosCevresindekiRakamlariAc(cord1 - 1, cord2 - 1);
+                BtnBosCevresindekiRakamlariAc(cord1 + 1, cord2 - 1);
+                BtnBosCevresindekiRakamlariAc(cord1 - 1, cord2 + 1);
+
                 BtnBosCevresindekiRakamlariAc(cord1 + 1, cord2);
                 BtnBosCevresindekiRakamlariAc(cord1 - 1, cord2);
                 BtnBosCevresindekiRakamlariAc(cord1, cord2 - 1);
                 BtnBosCevresindekiRakamlariAc(cord1, cord2 + 1);
-                BtnBosCevresindekiRakamlariAc(cord1 + 1, cord2 + 1);
-                BtnBosCevresindekiRakamlariAc(cord1 - 1, cord2 - 1);
                 return;
             }
             else if (btn.Tag.ToString() != "0" && btn.Tag.ToString() != "9")
