@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AnaForm));
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.Menu = new MetroFramework.Controls.MetroContextMenu(this.components);
             this.yeniOyunToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -75,6 +76,7 @@
             // 
             // Menu
             // 
+            resources.ApplyResources(this.Menu, "Menu");
             this.Menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.yeniOyunToolStripMenuItem,
             this.skorTablosuToolStripMenuItem,
@@ -82,47 +84,37 @@
             this.çıkışToolStripMenuItem});
             this.Menu.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.Menu.Name = "Menu";
-            this.Menu.Size = new System.Drawing.Size(142, 92);
-            this.Menu.Text = "Menü";
             this.Menu.UseCustomBackColor = true;
             this.Menu.UseCustomForeColor = true;
             this.Menu.UseStyleColors = true;
             // 
             // yeniOyunToolStripMenuItem
             // 
+            resources.ApplyResources(this.yeniOyunToolStripMenuItem, "yeniOyunToolStripMenuItem");
             this.yeniOyunToolStripMenuItem.Name = "yeniOyunToolStripMenuItem";
-            this.yeniOyunToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
-            this.yeniOyunToolStripMenuItem.Text = "Yeni Oyun";
             this.yeniOyunToolStripMenuItem.Click += new System.EventHandler(this.yeniOyunToolStripMenuItem_Click);
             // 
             // skorTablosuToolStripMenuItem
             // 
+            resources.ApplyResources(this.skorTablosuToolStripMenuItem, "skorTablosuToolStripMenuItem");
             this.skorTablosuToolStripMenuItem.Name = "skorTablosuToolStripMenuItem";
-            this.skorTablosuToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
-            this.skorTablosuToolStripMenuItem.Text = "Skor Tablosu";
             this.skorTablosuToolStripMenuItem.Click += new System.EventHandler(this.skorTablosuToolStripMenuItem_Click);
             // 
             // hakkındaToolStripMenuItem
             // 
+            resources.ApplyResources(this.hakkındaToolStripMenuItem, "hakkındaToolStripMenuItem");
             this.hakkındaToolStripMenuItem.Name = "hakkındaToolStripMenuItem";
-            this.hakkındaToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
-            this.hakkındaToolStripMenuItem.Text = "Hakkında";
             this.hakkındaToolStripMenuItem.Click += new System.EventHandler(this.HakkindaToolStripMenuItem_Click);
             // 
             // çıkışToolStripMenuItem
             // 
+            resources.ApplyResources(this.çıkışToolStripMenuItem, "çıkışToolStripMenuItem");
             this.çıkışToolStripMenuItem.Name = "çıkışToolStripMenuItem";
-            this.çıkışToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
-            this.çıkışToolStripMenuItem.Text = "Çıkış";
             this.çıkışToolStripMenuItem.Click += new System.EventHandler(this.CikisToolStripMenuItem_Click);
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 4;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.69231F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.30769F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.69231F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.30769F));
+            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
             this.tableLayoutPanel1.Controls.Add(this.lblKalanSureBoard, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblMayinSayisiBoard, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.lblSkorBoard, 1, 1);
@@ -131,180 +123,132 @@
             this.tableLayoutPanel1.Controls.Add(this.lblMayinSayisi, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.lblKalansure, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblSkor, 0, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(271, 71);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(346, 47);
-            this.tableLayoutPanel1.TabIndex = 1;
-            this.tableLayoutPanel1.Visible = false;
             // 
             // lblKalanSureBoard
             // 
-            this.lblKalanSureBoard.Anchor = System.Windows.Forms.AnchorStyles.None;
+            resources.ApplyResources(this.lblKalanSureBoard, "lblKalanSureBoard");
             this.lblKalanSureBoard.BackColor = System.Drawing.SystemColors.GrayText;
             this.lblKalanSureBoard.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblKalanSureBoard.Font = new System.Drawing.Font("Let\'s go Digital", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblKalanSureBoard.ForeColor = System.Drawing.Color.DarkOrange;
-            this.lblKalanSureBoard.Location = new System.Drawing.Point(115, 1);
-            this.lblKalanSureBoard.Margin = new System.Windows.Forms.Padding(0);
             this.lblKalanSureBoard.Name = "lblKalanSureBoard";
-            this.lblKalanSureBoard.Size = new System.Drawing.Size(55, 21);
-            this.lblKalanSureBoard.TabIndex = 2;
-            this.lblKalanSureBoard.Text = "00:00";
-            this.lblKalanSureBoard.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblMayinSayisiBoard
             // 
-            this.lblMayinSayisiBoard.Anchor = System.Windows.Forms.AnchorStyles.None;
+            resources.ApplyResources(this.lblMayinSayisiBoard, "lblMayinSayisiBoard");
             this.lblMayinSayisiBoard.BackColor = System.Drawing.SystemColors.GrayText;
             this.lblMayinSayisiBoard.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblMayinSayisiBoard.Font = new System.Drawing.Font("Let\'s go Digital", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMayinSayisiBoard.ForeColor = System.Drawing.Color.GreenYellow;
-            this.lblMayinSayisiBoard.Location = new System.Drawing.Point(288, 24);
-            this.lblMayinSayisiBoard.Margin = new System.Windows.Forms.Padding(0);
             this.lblMayinSayisiBoard.Name = "lblMayinSayisiBoard";
-            this.lblMayinSayisiBoard.Size = new System.Drawing.Size(55, 22);
-            this.lblMayinSayisiBoard.TabIndex = 2;
-            this.lblMayinSayisiBoard.Text = "9999";
-            this.lblMayinSayisiBoard.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblSkorBoard
             // 
-            this.lblSkorBoard.Anchor = System.Windows.Forms.AnchorStyles.None;
+            resources.ApplyResources(this.lblSkorBoard, "lblSkorBoard");
             this.lblSkorBoard.BackColor = System.Drawing.SystemColors.GrayText;
             this.lblSkorBoard.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblSkorBoard.Font = new System.Drawing.Font("Let\'s go Digital", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSkorBoard.ForeColor = System.Drawing.Color.GreenYellow;
-            this.lblSkorBoard.Location = new System.Drawing.Point(115, 24);
-            this.lblSkorBoard.Margin = new System.Windows.Forms.Padding(0);
             this.lblSkorBoard.Name = "lblSkorBoard";
-            this.lblSkorBoard.Size = new System.Drawing.Size(55, 22);
-            this.lblSkorBoard.TabIndex = 2;
-            this.lblSkorBoard.Text = "9999";
-            this.lblSkorBoard.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblTemizAlanBoard
             // 
-            this.lblTemizAlanBoard.Anchor = System.Windows.Forms.AnchorStyles.None;
+            resources.ApplyResources(this.lblTemizAlanBoard, "lblTemizAlanBoard");
             this.lblTemizAlanBoard.BackColor = System.Drawing.SystemColors.GrayText;
             this.lblTemizAlanBoard.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblTemizAlanBoard.Font = new System.Drawing.Font("Let\'s go Digital", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTemizAlanBoard.ForeColor = System.Drawing.Color.GreenYellow;
-            this.lblTemizAlanBoard.Location = new System.Drawing.Point(288, 0);
-            this.lblTemizAlanBoard.Margin = new System.Windows.Forms.Padding(0);
             this.lblTemizAlanBoard.Name = "lblTemizAlanBoard";
-            this.lblTemizAlanBoard.Size = new System.Drawing.Size(55, 22);
-            this.lblTemizAlanBoard.TabIndex = 2;
-            this.lblTemizAlanBoard.Text = "9999";
-            this.lblTemizAlanBoard.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblTemizAlan
             // 
-            this.lblTemizAlan.AutoSize = true;
-            this.lblTemizAlan.Dock = System.Windows.Forms.DockStyle.Right;
+            resources.ApplyResources(this.lblTemizAlan, "lblTemizAlan");
             this.lblTemizAlan.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.lblTemizAlan.Location = new System.Drawing.Point(205, 0);
             this.lblTemizAlan.Name = "lblTemizAlan";
-            this.lblTemizAlan.Size = new System.Drawing.Size(77, 23);
             this.lblTemizAlan.Style = MetroFramework.MetroColorStyle.Lime;
-            this.lblTemizAlan.TabIndex = 2;
-            this.lblTemizAlan.Text = "Temiz Alan:";
             this.lblTemizAlan.Theme = MetroFramework.MetroThemeStyle.Light;
             this.lblTemizAlan.UseCustomForeColor = true;
             // 
             // lblMayinSayisi
             // 
-            this.lblMayinSayisi.AutoSize = true;
-            this.lblMayinSayisi.Dock = System.Windows.Forms.DockStyle.Right;
+            resources.ApplyResources(this.lblMayinSayisi, "lblMayinSayisi");
             this.lblMayinSayisi.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.lblMayinSayisi.Location = new System.Drawing.Point(195, 23);
             this.lblMayinSayisi.Name = "lblMayinSayisi";
-            this.lblMayinSayisi.Size = new System.Drawing.Size(87, 24);
             this.lblMayinSayisi.Style = MetroFramework.MetroColorStyle.Lime;
-            this.lblMayinSayisi.TabIndex = 2;
-            this.lblMayinSayisi.Text = "Mayın Sayısı:";
             this.lblMayinSayisi.Theme = MetroFramework.MetroThemeStyle.Light;
             this.lblMayinSayisi.UseCustomForeColor = true;
             // 
             // lblKalansure
             // 
-            this.lblKalansure.AutoSize = true;
-            this.lblKalansure.Dock = System.Windows.Forms.DockStyle.Right;
+            resources.ApplyResources(this.lblKalansure, "lblKalansure");
             this.lblKalansure.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.lblKalansure.Location = new System.Drawing.Point(34, 0);
             this.lblKalansure.Name = "lblKalansure";
-            this.lblKalansure.Size = new System.Drawing.Size(76, 23);
             this.lblKalansure.Style = MetroFramework.MetroColorStyle.Lime;
-            this.lblKalansure.TabIndex = 2;
-            this.lblKalansure.Text = "Kalan Süre:";
             this.lblKalansure.Theme = MetroFramework.MetroThemeStyle.Light;
             this.lblKalansure.UseCustomForeColor = true;
             // 
             // lblSkor
             // 
-            this.lblSkor.AutoSize = true;
-            this.lblSkor.Dock = System.Windows.Forms.DockStyle.Right;
+            resources.ApplyResources(this.lblSkor, "lblSkor");
             this.lblSkor.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.lblSkor.Location = new System.Drawing.Point(71, 23);
             this.lblSkor.Name = "lblSkor";
-            this.lblSkor.Size = new System.Drawing.Size(39, 24);
             this.lblSkor.Style = MetroFramework.MetroColorStyle.Lime;
-            this.lblSkor.TabIndex = 2;
-            this.lblSkor.Text = "Skor:";
             this.lblSkor.Theme = MetroFramework.MetroThemeStyle.Light;
             this.lblSkor.UseCustomForeColor = true;
             // 
             // titleBaslikAltCizgi
             // 
+            resources.ApplyResources(this.titleBaslikAltCizgi, "titleBaslikAltCizgi");
             this.titleBaslikAltCizgi.ActiveControl = null;
-            this.titleBaslikAltCizgi.Location = new System.Drawing.Point(23, 173);
-            this.titleBaslikAltCizgi.Margin = new System.Windows.Forms.Padding(0);
             this.titleBaslikAltCizgi.Name = "titleBaslikAltCizgi";
-            this.titleBaslikAltCizgi.Size = new System.Drawing.Size(594, 3);
             this.titleBaslikAltCizgi.Style = MetroFramework.MetroColorStyle.Lime;
-            this.titleBaslikAltCizgi.TabIndex = 15;
-            this.titleBaslikAltCizgi.Text = "metroTile1";
             this.titleBaslikAltCizgi.UseSelectable = true;
             // 
             // lblTakmaIsım
             // 
-            this.lblTakmaIsım.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblTakmaIsım.AutoSize = true;
+            resources.ApplyResources(this.lblTakmaIsım, "lblTakmaIsım");
             this.lblTakmaIsım.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.lblTakmaIsım.Location = new System.Drawing.Point(21, -1);
             this.lblTakmaIsım.Name = "lblTakmaIsım";
-            this.lblTakmaIsım.Size = new System.Drawing.Size(76, 19);
             this.lblTakmaIsım.Style = MetroFramework.MetroColorStyle.Lime;
-            this.lblTakmaIsım.TabIndex = 5;
-            this.lblTakmaIsım.Text = "Takma isim:";
             this.lblTakmaIsım.Theme = MetroFramework.MetroThemeStyle.Light;
             // 
             // txtBxTakmaIsim
             // 
-            this.txtBxTakmaIsim.Anchor = System.Windows.Forms.AnchorStyles.None;
+            resources.ApplyResources(this.txtBxTakmaIsim, "txtBxTakmaIsim");
             // 
             // 
             // 
+            this.txtBxTakmaIsim.CustomButton.AccessibleDescription = resources.GetString("resource.AccessibleDescription");
+            this.txtBxTakmaIsim.CustomButton.AccessibleName = resources.GetString("resource.AccessibleName");
+            this.txtBxTakmaIsim.CustomButton.Anchor = ((System.Windows.Forms.AnchorStyles)(resources.GetObject("resource.Anchor")));
+            this.txtBxTakmaIsim.CustomButton.AutoSize = ((bool)(resources.GetObject("resource.AutoSize")));
+            this.txtBxTakmaIsim.CustomButton.AutoSizeMode = ((System.Windows.Forms.AutoSizeMode)(resources.GetObject("resource.AutoSizeMode")));
+            this.txtBxTakmaIsim.CustomButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("resource.BackgroundImage")));
+            this.txtBxTakmaIsim.CustomButton.BackgroundImageLayout = ((System.Windows.Forms.ImageLayout)(resources.GetObject("resource.BackgroundImageLayout")));
             this.txtBxTakmaIsim.CustomButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.txtBxTakmaIsim.CustomButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.txtBxTakmaIsim.CustomButton.Image = null;
-            this.txtBxTakmaIsim.CustomButton.Location = new System.Drawing.Point(153, 1);
+            this.txtBxTakmaIsim.CustomButton.Dock = ((System.Windows.Forms.DockStyle)(resources.GetObject("resource.Dock")));
+            this.txtBxTakmaIsim.CustomButton.FlatStyle = ((System.Windows.Forms.FlatStyle)(resources.GetObject("resource.FlatStyle")));
+            this.txtBxTakmaIsim.CustomButton.Font = ((System.Drawing.Font)(resources.GetObject("resource.Font")));
+            this.txtBxTakmaIsim.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            this.txtBxTakmaIsim.CustomButton.ImageAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("resource.ImageAlign")));
+            this.txtBxTakmaIsim.CustomButton.ImageIndex = ((int)(resources.GetObject("resource.ImageIndex")));
+            this.txtBxTakmaIsim.CustomButton.ImageKey = resources.GetString("resource.ImageKey");
+            this.txtBxTakmaIsim.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode")));
+            this.txtBxTakmaIsim.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location")));
+            this.txtBxTakmaIsim.CustomButton.MaximumSize = ((System.Drawing.Size)(resources.GetObject("resource.MaximumSize")));
             this.txtBxTakmaIsim.CustomButton.Name = "";
-            this.txtBxTakmaIsim.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtBxTakmaIsim.CustomButton.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("resource.RightToLeft")));
+            this.txtBxTakmaIsim.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size")));
             this.txtBxTakmaIsim.CustomButton.Style = MetroFramework.MetroColorStyle.Lime;
-            this.txtBxTakmaIsim.CustomButton.TabIndex = 1;
+            this.txtBxTakmaIsim.CustomButton.TabIndex = ((int)(resources.GetObject("resource.TabIndex")));
+            this.txtBxTakmaIsim.CustomButton.TextAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("resource.TextAlign")));
+            this.txtBxTakmaIsim.CustomButton.TextImageRelation = ((System.Windows.Forms.TextImageRelation)(resources.GetObject("resource.TextImageRelation")));
             this.txtBxTakmaIsim.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.txtBxTakmaIsim.CustomButton.UseCustomBackColor = true;
             this.txtBxTakmaIsim.CustomButton.UseCustomForeColor = true;
             this.txtBxTakmaIsim.CustomButton.UseSelectable = true;
             this.txtBxTakmaIsim.CustomButton.UseStyleColors = true;
             this.txtBxTakmaIsim.CustomButton.UseVisualStyleBackColor = true;
-            this.txtBxTakmaIsim.CustomButton.Visible = false;
+            this.txtBxTakmaIsim.CustomButton.Visible = ((bool)(resources.GetObject("resource.Visible")));
             this.txtBxTakmaIsim.IconRight = true;
             this.txtBxTakmaIsim.Lines = new string[0];
-            this.txtBxTakmaIsim.Location = new System.Drawing.Point(21, 21);
             this.txtBxTakmaIsim.MaxLength = 35;
             this.txtBxTakmaIsim.Name = "txtBxTakmaIsim";
             this.txtBxTakmaIsim.PasswordChar = '\0';
@@ -313,9 +257,7 @@
             this.txtBxTakmaIsim.SelectionLength = 0;
             this.txtBxTakmaIsim.SelectionStart = 0;
             this.txtBxTakmaIsim.ShortcutsEnabled = false;
-            this.txtBxTakmaIsim.Size = new System.Drawing.Size(175, 23);
             this.txtBxTakmaIsim.Style = MetroFramework.MetroColorStyle.Lime;
-            this.txtBxTakmaIsim.TabIndex = 1;
             this.txtBxTakmaIsim.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtBxTakmaIsim.UseSelectable = true;
             this.txtBxTakmaIsim.UseStyleColors = true;
@@ -325,55 +267,41 @@
             // 
             // btnBaslat
             // 
-            this.btnBaslat.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnBaslat.Location = new System.Drawing.Point(21, 53);
+            resources.ApplyResources(this.btnBaslat, "btnBaslat");
             this.btnBaslat.Name = "btnBaslat";
-            this.btnBaslat.Size = new System.Drawing.Size(175, 28);
-            this.btnBaslat.TabIndex = 1;
-            this.btnBaslat.Text = "Başlat";
             this.btnBaslat.UseSelectable = true;
             this.btnBaslat.Click += new System.EventHandler(this.btnBaslat_Click);
             // 
             // flwPnlGameLvl
             // 
+            resources.ApplyResources(this.flwPnlGameLvl, "flwPnlGameLvl");
             this.flwPnlGameLvl.Controls.Add(this.lblKolay);
             this.flwPnlGameLvl.Controls.Add(this.toggleKolay);
             this.flwPnlGameLvl.Controls.Add(this.lblOrta);
             this.flwPnlGameLvl.Controls.Add(this.toggleOrta);
             this.flwPnlGameLvl.Controls.Add(this.lblZor);
             this.flwPnlGameLvl.Controls.Add(this.toggleZor);
-            this.flwPnlGameLvl.Location = new System.Drawing.Point(471, 84);
             this.flwPnlGameLvl.Name = "flwPnlGameLvl";
-            this.flwPnlGameLvl.Size = new System.Drawing.Size(119, 68);
-            this.flwPnlGameLvl.TabIndex = 22;
             // 
             // lblKolay
             // 
-            this.lblKolay.Anchor = System.Windows.Forms.AnchorStyles.None;
+            resources.ApplyResources(this.lblKolay, "lblKolay");
             this.lblKolay.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.lblKolay.Location = new System.Drawing.Point(3, 2);
             this.lblKolay.Name = "lblKolay";
-            this.lblKolay.Size = new System.Drawing.Size(45, 19);
             this.lblKolay.Style = MetroFramework.MetroColorStyle.Lime;
-            this.lblKolay.TabIndex = 5;
-            this.lblKolay.Text = "Kolay:";
             this.lblKolay.Theme = MetroFramework.MetroThemeStyle.Light;
             this.lblKolay.UseCustomForeColor = true;
             // 
             // toggleKolay
             // 
-            this.toggleKolay.AutoSize = true;
+            resources.ApplyResources(this.toggleKolay, "toggleKolay");
             this.toggleKolay.Checked = true;
             this.toggleKolay.CheckState = System.Windows.Forms.CheckState.Checked;
             this.toggleKolay.DisplayFocus = true;
             this.toggleKolay.DisplayStatus = false;
-            this.toggleKolay.Location = new System.Drawing.Point(54, 3);
             this.toggleKolay.Name = "toggleKolay";
-            this.toggleKolay.Size = new System.Drawing.Size(50, 17);
             this.toggleKolay.Style = MetroFramework.MetroColorStyle.Lime;
-            this.toggleKolay.TabIndex = 1;
             this.toggleKolay.TabStop = false;
-            this.toggleKolay.Text = "On";
             this.toggleKolay.Theme = this.Theme;
             this.toggleKolay.UseCustomBackColor = true;
             this.toggleKolay.UseCustomForeColor = true;
@@ -383,141 +311,98 @@
             // 
             // lblOrta
             // 
-            this.lblOrta.Anchor = System.Windows.Forms.AnchorStyles.None;
+            resources.ApplyResources(this.lblOrta, "lblOrta");
             this.lblOrta.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.lblOrta.Location = new System.Drawing.Point(3, 25);
             this.lblOrta.Name = "lblOrta";
-            this.lblOrta.Size = new System.Drawing.Size(45, 19);
             this.lblOrta.Style = MetroFramework.MetroColorStyle.Lime;
-            this.lblOrta.TabIndex = 5;
-            this.lblOrta.Text = "Orta:";
             this.lblOrta.Theme = MetroFramework.MetroThemeStyle.Light;
             this.lblOrta.UseCustomForeColor = true;
             // 
             // toggleOrta
             // 
-            this.toggleOrta.AutoSize = true;
+            resources.ApplyResources(this.toggleOrta, "toggleOrta");
             this.toggleOrta.DisplayFocus = true;
             this.toggleOrta.DisplayStatus = false;
-            this.toggleOrta.Location = new System.Drawing.Point(54, 26);
             this.toggleOrta.Name = "toggleOrta";
-            this.toggleOrta.Size = new System.Drawing.Size(50, 17);
             this.toggleOrta.Style = MetroFramework.MetroColorStyle.Lime;
-            this.toggleOrta.TabIndex = 1;
             this.toggleOrta.TabStop = false;
-            this.toggleOrta.Text = "Off";
             this.toggleOrta.UseSelectable = true;
             this.toggleOrta.Click += new System.EventHandler(this.metroToggle2_Click);
             // 
             // lblZor
             // 
-            this.lblZor.Anchor = System.Windows.Forms.AnchorStyles.None;
+            resources.ApplyResources(this.lblZor, "lblZor");
             this.lblZor.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.lblZor.Location = new System.Drawing.Point(3, 48);
             this.lblZor.Name = "lblZor";
-            this.lblZor.Size = new System.Drawing.Size(45, 19);
             this.lblZor.Style = MetroFramework.MetroColorStyle.Lime;
-            this.lblZor.TabIndex = 5;
-            this.lblZor.Text = "Zor:";
             this.lblZor.Theme = MetroFramework.MetroThemeStyle.Light;
             this.lblZor.UseCustomForeColor = true;
             // 
             // toggleZor
             // 
-            this.toggleZor.AutoSize = true;
+            resources.ApplyResources(this.toggleZor, "toggleZor");
             this.toggleZor.DisplayFocus = true;
             this.toggleZor.DisplayStatus = false;
             this.flwPnlGameLvl.SetFlowBreak(this.toggleZor, true);
-            this.toggleZor.Location = new System.Drawing.Point(54, 49);
             this.toggleZor.Name = "toggleZor";
-            this.toggleZor.Size = new System.Drawing.Size(50, 17);
             this.toggleZor.Style = MetroFramework.MetroColorStyle.Lime;
-            this.toggleZor.TabIndex = 1;
             this.toggleZor.TabStop = false;
-            this.toggleZor.Text = "Off";
             this.toggleZor.UseSelectable = true;
             this.toggleZor.Click += new System.EventHandler(this.metroToggle3_Click);
             // 
             // pnlTakmaIsimBaslat
             // 
+            resources.ApplyResources(this.pnlTakmaIsimBaslat, "pnlTakmaIsimBaslat");
             this.pnlTakmaIsimBaslat.Controls.Add(this.btnBaslat);
             this.pnlTakmaIsimBaslat.Controls.Add(this.txtBxTakmaIsim);
             this.pnlTakmaIsimBaslat.Controls.Add(this.lblTakmaIsım);
-            this.pnlTakmaIsimBaslat.Location = new System.Drawing.Point(212, 71);
             this.pnlTakmaIsimBaslat.Name = "pnlTakmaIsimBaslat";
-            this.pnlTakmaIsimBaslat.Size = new System.Drawing.Size(216, 99);
-            this.pnlTakmaIsimBaslat.TabIndex = 23;
             // 
             // pnlConsole
             // 
+            resources.ApplyResources(this.pnlConsole, "pnlConsole");
             this.pnlConsole.BackColor = System.Drawing.Color.Transparent;
             this.pnlConsole.Controls.Add(this.richTextBox1);
             this.pnlConsole.Controls.Add(this.consoleTxtBx);
-            this.pnlConsole.Location = new System.Drawing.Point(0, -400);
-            this.pnlConsole.Margin = new System.Windows.Forms.Padding(0);
             this.pnlConsole.Name = "pnlConsole";
-            this.pnlConsole.Size = new System.Drawing.Size(501, 400);
-            this.pnlConsole.TabIndex = 26;
             // 
             // richTextBox1
             // 
+            resources.ApplyResources(this.richTextBox1, "richTextBox1");
             this.richTextBox1.BackColor = System.Drawing.SystemColors.Desktop;
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.richTextBox1.ForeColor = System.Drawing.Color.LawnGreen;
-            this.richTextBox1.Location = new System.Drawing.Point(0, 0);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(0);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(501, 385);
-            this.richTextBox1.TabIndex = 27;
             this.richTextBox1.TabStop = false;
-            this.richTextBox1.Text = "";
             // 
             // consoleTxtBx
             // 
+            resources.ApplyResources(this.consoleTxtBx, "consoleTxtBx");
             this.consoleTxtBx.BackColor = System.Drawing.SystemColors.InfoText;
             this.consoleTxtBx.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.consoleTxtBx.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.consoleTxtBx.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.consoleTxtBx.ForeColor = System.Drawing.Color.DarkOrange;
-            this.consoleTxtBx.Location = new System.Drawing.Point(0, 385);
-            this.consoleTxtBx.Margin = new System.Windows.Forms.Padding(0);
-            this.consoleTxtBx.MaxLength = 140;
             this.consoleTxtBx.Name = "consoleTxtBx";
-            this.consoleTxtBx.Size = new System.Drawing.Size(501, 15);
-            this.consoleTxtBx.TabIndex = 26;
-            this.consoleTxtBx.WordWrap = false;
             this.consoleTxtBx.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ConsoleTextBox_KeyDown);
             this.consoleTxtBx.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.consoleTxtBx_KeyPress);
             // 
             // pnlGameMap
             // 
-            this.pnlGameMap.Location = new System.Drawing.Point(23, 187);
-            this.pnlGameMap.Margin = new System.Windows.Forms.Padding(0);
+            resources.ApplyResources(this.pnlGameMap, "pnlGameMap");
             this.pnlGameMap.Name = "pnlGameMap";
-            this.pnlGameMap.Size = new System.Drawing.Size(102, 66);
-            this.pnlGameMap.TabIndex = 9;
             // 
             // btnMenu
             // 
-            this.btnMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnMenu.Location = new System.Drawing.Point(23, 71);
+            resources.ApplyResources(this.btnMenu, "btnMenu");
             this.btnMenu.Name = "btnMenu";
-            this.btnMenu.Size = new System.Drawing.Size(75, 17);
-            this.btnMenu.TabIndex = 1;
             this.btnMenu.TabStop = false;
-            this.btnMenu.Text = "Menu";
             this.btnMenu.UseSelectable = true;
             this.btnMenu.Click += new System.EventHandler(this.btnMenu_Click);
             // 
             // AnaForm
             // 
-            this.AccessibleName = "fatihertugral89@gmail.com";
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(640, 196);
             this.Controls.Add(this.pnlConsole);
             this.Controls.Add(this.pnlTakmaIsimBaslat);
             this.Controls.Add(this.flwPnlGameLvl);
@@ -527,13 +412,10 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.KeyPreview = true;
             this.MaximizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(640, 196);
             this.Name = "AnaForm";
             this.Resizable = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Style = MetroFramework.MetroColorStyle.Lime;
-            this.Text = "Mayın Tarlası";
-            this.Theme = MetroFramework.MetroThemeStyle.Default;
+            this.Style = MetroFramework.MetroColorStyle.Silver;
+            this.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.TransparencyKey = System.Drawing.Color.LavenderBlush;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AnaForm_KeyPress);

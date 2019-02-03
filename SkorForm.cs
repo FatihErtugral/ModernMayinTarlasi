@@ -28,10 +28,10 @@ namespace WindowsFormsApp
             this.Theme = ownerPointer.Theme;
             this.dataGridSkor.Style = this.Style;
             this.dataGridSkor.Theme = this.Theme;
-             this.dataGridSkor.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-             //this.dataGridSkor.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            this.dataGridSkor.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dataGridSkor.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
-            //this.dataGridSkor.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.ForeColor = Color.FromArgb(191, 191, 191);
+            this.dataGridSkor.ForeColor = this.ForeColor;
             if(File.Exists(Application.StartupPath + "\\Skor\\Skor.json"))
             {
                 var model = JsonConvert.DeserializeObject<SkorJSonModel>(
@@ -41,5 +41,7 @@ namespace WindowsFormsApp
                 //metroGrid1.Sort(metroGrid1.Columns[1], ListSortDirection.Descending);
              }
         }
+
+       
     }
 }

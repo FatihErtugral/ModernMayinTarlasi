@@ -142,6 +142,9 @@
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AnaForm.to.resx">
+      <DependentUpon>AnaForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AnaForm.tr-TR.resx">
       <DependentUpon>AnaForm.cs</DependentUpon>
     </EmbeddedResource>

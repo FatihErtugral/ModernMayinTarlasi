@@ -9,7 +9,7 @@ using System.Reflection;
 
 namespace WindowsFormsApp
 {
-    class TarladakiButonlar
+    internal class TarladakiButonlar
     {
         private Dictionary<Point, GameMineButton> butonListesi;
         private GameMineButton  _btn;
@@ -22,15 +22,15 @@ namespace WindowsFormsApp
 
 
         // Game Button Color property
-        private Color btnGameStep_BackColor     = Color.FromArgb(255, 255, 255);
-        private Color btnGameMine_BackColor     = Color.FromArgb(255, 255, 255);
-        private Color btnGameClean_BackColor    = Color.FromArgb(242, 242, 242); 
-        private Color btnGameClean_BorderColor  = Color.FromArgb(242, 242, 242); 
-        private Color btnGameNum_BackColor      = Color.FromArgb(89, 102, 120);     
-        private Color btnGameNum_ForeColor      = Color.FromArgb(255, 255, 255); 
-        private Color btnGameNum_BorderColor    = Color.FromArgb(89, 102, 120);
-        private Color btnGameDefault_BackColor  = Color.FromArgb(13, 13, 13);
-        private Color btnGameDefault_BorderColor = Color.FromArgb(255, 255, 255);
+        private Color btnGameStep_BackColor     = Color.FromArgb(242, 242, 242);
+        private Color btnGameMine_BackColor     = Color.FromArgb(242, 242, 242);
+        private Color btnGameClean_BackColor    = Color.FromArgb(191, 191, 191); 
+        private Color btnGameClean_BorderColor  = Color.FromArgb(191, 191, 191); 
+        private Color btnGameNum_BackColor      = Color.FromArgb(64, 64, 64);     
+        private Color btnGameNum_ForeColor      = Color.FromArgb(165, 219, 0); 
+        private Color btnGameNum_BorderColor    = Color.FromArgb(164,164, 164);
+        private Color btnGameDefault_BackColor  = Color.FromArgb(72, 72, 72);
+        private Color btnGameDefault_BorderColor = Color.FromArgb(72, 72, 72);
 
          
         private Size    _btnSize   = new Size(25, 25);
@@ -90,53 +90,6 @@ namespace WindowsFormsApp
         }
         ///////////////////////////////////////////////////////////////////
 
-        #region Konsol Metodları
-
-       
-        public void MayinlariKilitle()
-        {
-            foreach (var btn in butonListesi)
-            {
-                if (btn.Value.Tag.ToString() == "9")
-                {
-                    btn.Value.BackgroundImage = _btnGameStepImg;
-                    btn.Value.BackColor = btnGameMine_BackColor;
-                }
-            }
-        }
-
-        public void MayinlarinKilidiniKaldir()
-        {
-            foreach (var btn in butonListesi)
-            {
-                if (btn.Value.Tag.ToString() == "9")
-                {
-                    btn.Value.BackgroundImage = null;
-                    btn.Value.BackColor = btnGameDefault_BackColor;
-                }
-            }
-        }
-        ///////////////////////////////////////////////////////////////////
-        /// <summary>
-        /// İki boyutlu diziyi sitring olarak yazdır
-        /// </summary>
-        /// <returns></returns>
-        public string MatrisPrint()
-        {
-            string matris ="";
-            for (int i = 0; i < this.dikeyButonSayisi; i++)
-            {
-                for (int k = 0; k < this.yatayButonSayisi; k++)
-                {
-                    matris += $" [{_matrisDizi._2DArray[k, i]}]";
-                }
-                matris += "\n";
-            }
-            return matris;
-        }
-
-        #endregion
-        ///////////////////////////////////////////////////////////////////
 
         // Ramde bir adet buton heap kısmına uluşturulur 
         // GameMineButton sınıfı Prototype desenini üzerinde taşır
@@ -178,9 +131,10 @@ namespace WindowsFormsApp
             _Point.X = (cord_X * (btn.Height + 2));
             _Point.Y = (cord_Y * (btn.Width + 2));
             btn.Location    = _Point;
-
+            
             btn.Click      += btnClickHandler;
             btn.MouseUp    += btnSagClickHandler;
+            btn.FlatAppearance.BorderColor = btnGameDefault_BorderColor;
 
             pnlPlatform.Controls.Add(btn);
             return btn;
@@ -200,10 +154,12 @@ namespace WindowsFormsApp
                 {
                     btn.BackgroundImage = _btnGameStepImg;
                     btn.BackColor = btnGameStep_BackColor;
+                    btn.FlatAppearance.BorderColor = btnGameNum_BorderColor;
                 }
                 else    {
                     btn.BackgroundImage = null;
                     btn.BackColor = btnGameDefault_BackColor;
+                    btn.FlatAppearance.BorderColor = btnGameDefault_BorderColor;
                 }
             }
         }
@@ -347,6 +303,55 @@ namespace WindowsFormsApp
                 this.AcilmamisMayinsizButon--;
             }
         }
+
+        
+        #region Konsol Metodları
+
+       
+        public void MayinlariKilitle()
+        {
+            foreach (var btn in butonListesi)
+            {
+                if (btn.Value.Tag.ToString() == "9")
+                {
+                    btn.Value.BackgroundImage = _btnGameStepImg;
+                    btn.Value.BackColor = btnGameMine_BackColor;
+                }
+            }
+        }
+
+        public void MayinlarinKilidiniKaldir()
+        {
+            foreach (var btn in butonListesi)
+            {
+                if (btn.Value.Tag.ToString() == "9")
+                {
+                    btn.Value.BackgroundImage = null;
+                    btn.Value.BackColor = btnGameDefault_BackColor;
+                }
+            }
+        }
+        ///////////////////////////////////////////////////////////////////
+        /// <summary>
+        /// İki boyutlu diziyi sitring olarak yazdır
+        /// </summary>
+        /// <returns></returns>
+        public string MatrisPrint()
+        {
+            string matris ="";
+            for (int i = 0; i < this.dikeyButonSayisi; i++)
+            {
+                for (int k = 0; k < this.yatayButonSayisi; k++)
+                {
+                    matris += $" [{_matrisDizi._2DArray[k, i]}]";
+                }
+                matris += "\n";
+            }
+            return matris;
+        }
+
+        #endregion
+        ///////////////////////////////////////////////////////////////////
     }
     //---------------------------------------------------------------------------------
 
@@ -386,8 +391,7 @@ namespace WindowsFormsApp
                 "Paint",
                 "Enabled",
                 "Tag",
-                "BackgroundImageLayout",
-                "FlatAppearance.BorderColor"
+                "BackgroundImageLayout"
             };
 
             foreach (PropertyInfo pi in piList.Where(i=>lst.Contains(i.Name)))//içerisinde bulunduğumuz sınıfın propertyleri içerisinde dönülmeye başlanır.

@@ -48,7 +48,7 @@ namespace WindowsFormsApp
             lblKalansure.Style  = lblKolay.Style        = lblMayinSayisi.Style  = lblOrta.Style = 
             lblTemizAlan.Style  = lblTakmaIsım.Style    = lblTemizAlan.Style    = lblZor.Style  = this.Style;
             /////////////////////////////////////////////////////////////////////////////////////////////////
-            this.ForeColor = Color.White;
+            this.ForeColor = Color.FromArgb(191, 191, 191);
         }
 
         private void yeniOyunToolStripMenuItem_Click(object sender, EventArgs e)
